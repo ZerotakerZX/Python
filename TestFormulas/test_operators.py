@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true
-from operators import task47, task410, task411, task416a, task416b
+from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b
 
 
 class TestOperators(unittest.TestCase):
@@ -68,3 +68,45 @@ class TestOperators(unittest.TestCase):
         b = 2
         result = task416a(a, b)
         assert_false(result)
+
+    def test_task423a(self):
+        number = 12 #проверка на большую ВТОРУЮ цифру
+        result = task423a(number)
+        expected_result = 2
+        assert_equal(result, expected_result)
+
+        number = 21  # проверка на большую ПЕРВУЮ цифру
+        result = task423a(number)
+        expected_result = 2
+        assert_equal(result, expected_result)
+
+        number = 33  # проверка на одинаковость
+        result = task423a(number)
+        assert_equal(result, 3)
+
+    def test_task427(self):
+        number = 121
+        result = task427(number)
+        assert_true(result, "polyndrome test")
+
+        number = 321
+        result = task427(number)
+        assert_false(result, "failed polyndrome test")
+
+    def test_task431a(self):
+        number = 111
+        result = task431a(number)
+        assert_true(result, "all-same test")
+
+        number = 121
+        result = task431a(number)
+        assert_false(result, "failed all-same test")
+
+    def test_task431b(self):
+        number = 211
+        result = task431b(number)
+        assert_true(result, "any-same test")
+
+        number = 123
+        result = task431b(number)
+        assert_false(result, "failed any-same test")

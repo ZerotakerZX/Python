@@ -15,8 +15,16 @@ def task410(a, b):
         return 'square'
 
 def task411(a, b):
-    material_a = (a[1] / a[0]) #1
-    material_b = (b[1] / b[0]) #0.5
+    try:
+        material_a = (a[1] / a[0]) #1
+    except ZeroDivisionError:
+        material_a = 0
+
+    try:
+        material_b = (b[1] / b[0]) #0.5
+    except ZeroDivisionError:
+        material_b = 0
+
     if material_a > material_b:
         return a
     else:
@@ -38,3 +46,27 @@ def task416b(a, b):
         return True
     else:
         return False
+
+def task423a(number):
+    fst_digit = number // 10
+    snd_digit = number % 10
+    if fst_digit > snd_digit:
+        return fst_digit
+
+    return snd_digit
+
+def task427(number):
+    if (number // 100) == (number % 10):
+        return True
+
+    return False
+
+def task431a(number):
+    if (number // 100) == (number % 10) == (number // 10 % 10):
+        return True
+    return False
+
+def task431b(number):
+   if (number // 100) == (number // 10 % 10) or (number // 10 % 10) == (number % 10) or (number // 100) == (number % 10):
+        return True
+   return False
