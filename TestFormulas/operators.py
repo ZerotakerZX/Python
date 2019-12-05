@@ -67,6 +67,66 @@ def task431a(number):
     return False
 
 def task431b(number):
-   if (number // 100) == (number // 10 % 10) or (number // 10 % 10) == (number % 10) or (number // 100) == (number % 10):
+    first_digit = number // 100
+    second_digit = number // 10 % 10
+    third_digit = number % 10
+    if first_digit == second_digit:
         return True
-   return False
+    if second_digit == third_digit:
+        return True
+    if first_digit == third_digit:
+        return True
+    return False
+
+def task436(minute, green, red):
+    cycle_period = red + green
+    cycle = minute % cycle_period
+    if 0 < cycle < green:
+        return 'green'
+    return 'red'
+
+def task465(year):
+    """
+    if ((year / 4) % 100) == 0: #високсный кратный 400
+        return True
+
+    if (year % 4) == 0 and ((year / 4) % 100) == 0: #просто високосный не кратный 100 кроме 400
+        return True
+
+    if (year % 4) == 0: #просто високосный не кратный 100 кроме 400
+        return True
+    """
+    if (year % 4) != 0: #просто високосный
+        return False
+
+    if year % 400 == 0:
+        return True
+
+    if year % 100 == 0:
+        return False
+
+    return True
+
+def task464(number):
+    d1 = number // 100000
+    d2 = number // 10000 % 10
+    d3 = number // 1000 % 10
+    d4 = number // 100 % 10
+    d5 = number // 10 % 10
+    d6 = number % 10
+    if d1 + d2 + d3 == d4 + d5 + d6:
+        return True
+    return False
+
+def task466(a, b, c, d, e):
+    s_table = a * b #площадь стола
+    domino_a = c * d #площадь домино картинкой вверх
+    domino_b = c * e  #площадь домино н лежащей на боку
+    domino_c = d * e  # площадь стоящей на торце
+    if (s_table // domino_a) > (s_table // domino_b) and (s_table // domino_a) > (s_table // domino_c):
+        return 'normal_position'
+    if (s_table // domino_b) > (s_table // domino_a) and (s_table // domino_b) > (s_table // domino_c):
+        return 'side_position'
+    if (s_table // domino_c) > (s_table // domino_a) and (s_table // domino_c) > (s_table // domino_b):
+        return 'upward_position'
+

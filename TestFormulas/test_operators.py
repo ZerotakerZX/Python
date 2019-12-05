@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true
-from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b
+from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466
 
 
 class TestOperators(unittest.TestCase):
@@ -107,6 +107,120 @@ class TestOperators(unittest.TestCase):
         result = task431b(number)
         assert_true(result, "any-same test")
 
+        number = 112
+        result = task431b(number)
+        assert_true(result, "any-same test")
+
+        number = 121
+        result = task431b(number)
+        assert_true(result, "any-same test")
+
         number = 123
         result = task431b(number)
         assert_false(result, "failed any-same test")
+
+    def test_task436(self):
+        minute = 1
+        green = 3
+        red = 2
+        color = task436(minute, green, red)
+        expected_color = 'green'
+        assert_equal(color, expected_color)
+
+        minute = 4
+        color = task436(minute, green, red)
+        expected_color = 'red'
+        assert_equal(color, expected_color)
+
+        minute = 6
+        color = task436(minute, green, red)
+        expected_color = 'green'
+        assert_equal(color, expected_color)
+
+        minute = 8
+        color = task436(minute, green, red)
+        expected_color = 'red'
+        assert_equal(color, expected_color)
+
+        minute = 4
+        green = 5
+        red = 2
+        color = task436(minute, green, red)
+        expected_color = 'green'
+        assert_equal(color, expected_color)
+
+    def test_task465(self):
+        """
+        year = 2004
+        result = task465(year)
+        assert_true(result)
+
+        year = 1900
+        result = task465(year)
+        assert_false(result)
+        """
+
+        year = 2019
+        result = task465(year)
+        assert_false(result)
+
+        year = 2020
+        result = task465(year)
+        assert_true(result)
+
+        year = 1900
+        result = task465(year)
+        assert_false(result)
+
+        year = 2000
+        result = task465(year)
+        assert_true(result)
+
+        year = 1600
+        result = task465(year)
+        assert_true(result)
+
+    def test_task464(self):
+        number = 333072
+        result = task464(number)
+        assert_true(result)
+
+        number = 111111
+        result = task464(number)
+        assert_true(result)
+
+        number = 111222
+        result = task464(number)
+        assert_false(result)
+
+        number = 1000000
+        result = task464(number)
+        assert_false(result)
+
+    def test_task466(self):
+        a = 20
+        b = 10
+        c = 3
+        d = 2
+        e = 1
+        result = task466(a, b, c, d, e)
+        expected_result = ('upward_position')
+        assert_equal(result, expected_result) #тест на нормальную кость
+
+        a = 20
+        b = 10
+        c = 1
+        d = 2
+        e = 3
+        result = task466(a, b, c, d, e)
+        expected_result = ('normal_position')
+        assert_equal(result, expected_result) #тест слишком толстую кость
+
+        a = 20
+        b = 10
+        c = 1
+        d = 3
+        e = 2
+        result = task466(a, b, c, d, e)
+        expected_result = ('side_position')
+        assert_equal(result, expected_result) #тест слишком широкую кость
