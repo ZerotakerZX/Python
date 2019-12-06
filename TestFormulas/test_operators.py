@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true
-from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466
+from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467
 
 
 class TestOperators(unittest.TestCase):
@@ -224,3 +224,15 @@ class TestOperators(unittest.TestCase):
         result = task466(a, b, c, d, e)
         expected_result = ('side_position')
         assert_equal(result, expected_result) #тест слишком широкую кость
+
+    def test_task467(self):
+        k = 1
+        result = task467(k)
+        expected_result = ('work')
+        assert_equal(result, expected_result)  #тест на рабочий день
+
+    def test_task467(self):
+        k = 14
+        result = task467(k)
+        expected_result = ('rest')
+        assert_equal(result, expected_result)  #тест на выходной день

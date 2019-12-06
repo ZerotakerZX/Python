@@ -130,3 +130,8 @@ def task466(a, b, c, d, e):
     if (s_table // domino_c) > (s_table // domino_a) and (s_table // domino_c) > (s_table // domino_b):
         return 'upward_position'
 
+def task467(k):
+    weekday = k % 7
+    if k <= 5:
+        return 'work'
+    return 'rest'
