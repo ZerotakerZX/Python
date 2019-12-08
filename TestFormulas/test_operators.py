@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true
-from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467
+from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469a
 
 
 class TestOperators(unittest.TestCase):
@@ -231,8 +231,26 @@ class TestOperators(unittest.TestCase):
         expected_result = ('work')
         assert_equal(result, expected_result)  #тест на рабочий день
 
-    def test_task467(self):
-        k = 14
-        result = task467(k)
-        expected_result = ('rest')
-        assert_equal(result, expected_result)  #тест на выходной день
+    def test_task469a(self):
+        first_hor_lenght = 1 #параметры первого прямоугольника
+        first_ver_lenght = 1
+        first_angle_coordinat_hor = 0
+        first_angle_coordinat_ver = 0
+        second_hor_lenght = 2 #параметры второго прямоугольника
+        second_ver_lenght = 2
+        second_angle_coordinat_hor = 0
+        second_angle_coordinat_ver = 0
+        result = task469a(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_angle_coordinat_hor, first_angle_coordinat_ver, second_angle_coordinat_hor, second_angle_coordinat_ver)
+        assert_true(result)  #тест на все точки первого принадлежат второму
+
+    def test_task469a(self):
+        first_hor_lenght = 10 #параметры первого прямоугольника
+        first_ver_lenght = 10
+        first_hor_start = 0
+        first_ver_start = 0
+        second_hor_lenght = 2 #параметры второго прямоугольника
+        second_ver_lenght = 2
+        second_ver_start = 0
+        second_hor_start = 0
+        result = task469a(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_ver_start, second_hor_start)
+        assert_false(result)  #тест на все точки первого НЕ принадлежат

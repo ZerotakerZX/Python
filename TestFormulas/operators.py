@@ -135,3 +135,12 @@ def task467(k):
     if k <= 5:
         return 'work'
     return 'rest'
+
+def task469a(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_hor_start, second_ver_start):
+    first_hor_end = first_hor_start + first_hor_lenght
+    first_ver_end = first_ver_start + first_ver_lenght
+    second_ver_end = second_ver_start + second_ver_lenght
+    second_hor_end = second_hor_start + second_hor_lenght
+    if (second_hor_lenght >= first_hor_lenght) and (second_hor_end >= first_hor_end) and (second_ver_lenght >= first_ver_lenght) and (second_ver_end >= first_ver_end): #работает только если фигуры в положительном диапозоне
+        return True
+    return False
