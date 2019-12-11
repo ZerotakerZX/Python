@@ -144,3 +144,18 @@ def task469a(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_l
     if (second_hor_lenght >= first_hor_lenght) and (second_hor_end >= first_hor_end) and (second_ver_lenght >= first_ver_lenght) and (second_ver_end >= first_ver_end): #работает только если фигуры в положительном диапозоне
         return True
     return False
+
+def task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_hor_start, second_ver_start):
+    first_hor_end = first_hor_start + first_hor_lenght
+    first_ver_end = first_ver_start + first_ver_lenght
+    second_ver_end = second_ver_start + second_ver_lenght
+    second_hor_end = second_hor_start + second_hor_lenght
+    if first_hor_start > second_hor_end and first_ver_start > second_ver_end:
+        return "не пересекаются" #задание В, что не пересекаются вовсе
+    if second_hor_start > first_hor_end and second_ver_start > first_ver_end:
+        return "не пересекаются" #задание В, что не пересекаются вовсе
+    if (second_hor_lenght >= first_hor_lenght) and (second_hor_end >= first_hor_end) and (second_ver_lenght >= first_ver_lenght) and (second_ver_end >= first_ver_end): #работает только если фигуры в положительном диапозоне
+        return "второй принадлежит первому" #задание А, что второй вписывается в первый
+    if (first_hor_lenght >= second_hor_lenght) and (first_hor_end >= second_hor_end) and (first_ver_lenght >= second_ver_lenght) and (first_ver_end >= second_ver_end): #работает только если фигуры в положительном диапозоне
+        return "первый принадлежит второму" #задание Б, покрывает вариант и что первый вписывается во второй
+    return "пересекаются частично"
