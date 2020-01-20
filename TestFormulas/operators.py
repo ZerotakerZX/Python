@@ -159,3 +159,112 @@ def task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_le
     if (first_hor_lenght >= second_hor_lenght) and (first_hor_end >= second_hor_end) and (first_ver_lenght >= second_ver_lenght) and (first_ver_end >= second_ver_end): #работает только если фигуры в положительном диапозоне
         return "первый принадлежит второму" #задание Б, покрывает вариант и что первый вписывается во второй
     return "пересекаются частично"
+
+def task4100(first, second, third):
+    if first < second and first < third:
+        a = first #если первое число - первое наименьшее
+        if second < third:
+            b = second #если второе число - второе наименьшее
+        if third < second:
+            b = third #если третье число - второе наименьшее
+    if second < first and second < third:
+        a = second  # если второе число - первое наименьшее
+        if first < third:
+            b = first  # если первое число - второе наименьшее
+        if third < first:
+            b = third  # если третье число - второе наименьшее
+    if third < first and third < second:
+        a = third  # если третье число - первое наименьшее
+        if first < third:
+            b = first  # если первое число - второе наименьшее
+        if second < first:
+            b = second  # если второе число - второе наименьшее
+    c = a * b
+    return c
+
+def task4100b(first, second, third):
+    if first > second and first > third:
+        return second * third
+    if second > third and second > first:
+        return third * first
+    if third > first and third > second:
+        return second * first
+
+def task4103(first, second, third):
+    if first > second and first > third:
+        return first
+    if second > third and second > first:
+        return second
+    return third
+
+def task4103b(first, second, third):
+    if first < second and first < third:
+        return first
+    if second < third and second < first:
+        return second
+    return third
+
+def task4104(day):
+    if day == 1:
+        print('понедельник')
+        return 'понедельник'
+    if day == 2:
+        print('вторник')
+        return 'вторник'
+    if day == 3:
+        print('среда')
+        return 'среда'
+    if day == 4:
+        print('четверг')
+        return 'четверг'
+    if day == 5:
+        print('пятница')
+        return 'пятница'
+    if day == 6:
+        print('суббота')
+        return 'суббота'
+    if day == 7:
+        print('воскресенье')
+        return 'воскресенье'
+    if day > 7:
+        print('много')
+        return 'много'
+
+def task53a(start, end, step):
+    return [i for i in range(start, end, step)]
+
+"""
+def task53b(start, end, step):
+    result = []
+    for i in range(start, end, step):
+        result.append(i * i)
+    return result
+"""
+
+def task53b(start, end, step):
+    return [i * i for i in range(start, end, step)]
+
+def task59(start, end, step):
+    result = []
+    for i in range(start, end, step):
+        result.append(i * 2.5)
+    return result
+
+def task510(step):
+    start = 0
+    end = 181
+    result = []
+    for i in range(start, end, step):
+        result.append(i)
+    return result
+
+def task515(end):
+    start = 0
+    step = 1
+    result = []
+    for i in range(start, end, step): #печать таблицы умножения
+        quotient = i * 7
+        print(f"{quotient} X 7 = {i}.")
+    for i in range(start, end, step): #просчёт результата для сверки
+        result.append(i * 7)
+    return result

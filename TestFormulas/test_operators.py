@@ -1,6 +1,6 @@
 import unittest
-from nose.tools import assert_equal, assert_false, assert_true
-from operators import task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469
+from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
+from operators import task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -279,3 +279,89 @@ class TestOperators(unittest.TestCase):
         result = task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_ver_start, second_hor_start)
         expected_result = ("пересекаются частично")
         assert_equal(result, expected_result)  #тест что пересекаются частично
+
+    def test_task4100(self):
+        first = 1
+        second = 2
+        third = 3
+        result = task4100(first, second, third)
+        expected_result = 2
+        assert_equal(result, expected_result)  #тест на 1*2=2
+
+    def test_task4100(self):
+        first = 6
+        second = 5
+        third = 4
+        result = task4100(first, second, third)
+        expected_result = 20
+        assert_equal(result, expected_result)  #тест на 4*5=20
+
+    def test_task4100b(self):
+        first = 3
+        second = 2
+        third = 10
+        result = task4100b(first, second, third)
+        expected_result = 6
+        assert_equal(result, expected_result)
+
+    def test_task4103(self):
+        first = 1
+        second = 2
+        third = 3
+        result = task4103(first, second, third)
+        expected_result = 3 #наибольшее
+        assert_equal(result, expected_result)
+
+    def test_task4103b(self):
+        first = 1
+        second = 2
+        third = 3
+        result = task4103b(first, second, third)
+        expected_result = 1 #наименьшее
+        assert_equal(result, expected_result)
+
+    def test_task4104(self):
+        day = 8
+        result = task4104(day)
+        expected_result = 'много'
+        assert_equal(result, expected_result)
+
+    def test_task53a(self):
+        expected_result = [20, 21, 22, 23, 24, 25]
+        result = task53a(20, 26, 1)
+        assert_list_equal(expected_result, result)
+        expected_result = [25, 26, 27, 28, 29, 30]
+        result = task53a(25, 31, 1)
+        assert_list_equal(expected_result, result)
+
+        expected_result = [20, 22, 24, 26, 28, 30]
+        result = task53a(20, 31, 2)
+        assert_list_equal(expected_result, result)
+
+    def test_task53b(self):
+        expected_result = [4, 9, 16, 25]
+        result = task53b(2, 6, 1)
+        assert_list_equal(expected_result, result)
+
+        expected_result = [4, 9, 16]
+        result = task53b(2, 5, 1)
+        assert_list_equal(expected_result, result)
+
+    def test_task59(self):
+        expected_result = [25.0, 27.5, 30.0, 32.5, 35.0, 37.5, 40.0, 42.5, 45.0, 47.5, 50.0, 52.5, 55.0] #дюйм = ~2.5см
+        result = task59(10, 23, 1)
+        assert_list_equal(expected_result, result)
+
+        expected_result = [27.5, 30.0, 32.5, 35.0, 37.5, 40.0, 42.5, 45.0, 47.5, 50.0, 52.5, 55.0] #дюйм = ~2.5см
+        result = task59(11, 23, 1)
+        assert_list_equal(expected_result, result)
+
+    def test_task510(self):
+        expected_result = [0, 60, 120, 180] #от нуля до трёх баксов
+        result = task510(60) #старт, финиш, текущий курс
+        assert_list_equal(expected_result, result)
+
+    def test_task515(self):
+        expected_result = [0, 7, 14, 21, 28, 35, 42, 49, 56, 63] #результаты умножения на 7
+        result = task515(10) #до скольки прописать таблицу
+        assert_list_equal(expected_result, result)
