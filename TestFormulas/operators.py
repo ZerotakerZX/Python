@@ -268,3 +268,15 @@ def task515(end):
     for i in range(start, end, step): #просчёт результата для сверки
         result.append(i * 7)
     return result
+
+def task527a(end):
+    start = 0
+    step = 1
+    result = []
+    all_numbers = []
+    for i in range (start, end, step):
+        all_numbers.append(i)
+        the_sum = sum(all_numbers)
+        result = the_sum
+    return result
+
