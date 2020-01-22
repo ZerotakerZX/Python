@@ -275,8 +275,21 @@ def task527a(end):
     result = []
     all_numbers = []
     for i in range (start, end, step):
-        all_numbers.append(i)
-        the_sum = sum(all_numbers)
-        result = the_sum
+        all_numbers.append(i) #добавить в переменную-список все нужные числа
+        the_sum = sum(all_numbers) #взять содержимое списка и суммировать
+        result = the_sum #и добавить в переменную результат
+    return result
+
+def task528a(start, end):
+    step = 1
+    end = end + 1 #на случай ввода максимального числа с клавы
+    result = []
+    all_numbers = []
+    the_prod = 1
+    for i in range(start, end, step):
+        all_numbers.append(i) #добавить в переменную-список все нужные числа
+    for i in all_numbers: #взять содержимое списка и перемножить
+        the_prod *= i #и добавить в переменную результат
+        result = the_prod
     return result
 
