@@ -293,3 +293,30 @@ def task528a(start, end):
         result = the_prod
     return result
 
+def task529a(end):
+    start = 0
+    step = 1
+    end = end + 1 #на случай ввода максимального числа с клавы
+    result = []
+    all_numbers = []
+    the_avg = 1
+    for i in range(start, end, step):
+        all_numbers.append(i) #добавить в переменную-список все нужные числа
+    for i in all_numbers: #взять содержимое списка и усреднить
+        the_avg = sum(all_numbers)/len(all_numbers) #и добавить в переменную результат
+        result = the_avg
+    return result
+
+def task530a(end):
+    start = 0
+    step = 1
+    end = end + 1 #на случай ввода максимального числа с клавы
+    all_numbers = []
+    the_cube = []
+    for i in range(start, end, step):
+        all_numbers.append(i) #добавить в переменную-список все нужные числа
+    for i in all_numbers:
+        the_cube.append(i * i * i) # добавить в другую переменную квадраты всех чисел
+    cube_sum = sum(the_cube) #и найте сумму их
+    result = cube_sum
+    return result

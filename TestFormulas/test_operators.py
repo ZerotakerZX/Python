@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -374,4 +374,14 @@ class TestOperators(unittest.TestCase):
     def test_task528a(self):
         expected_result = 259459200 #произведение всех чисел от 8 до 15
         result = task528a(8, 15) #от/до скольки умножать
+        assert_equal(expected_result, result)
+
+    def test_task529a(self):
+        expected_result = 50 #средне арифметические всех целых чисел от 1 до 100
+        result = task529a(100) #до скольки считать
+        assert_equal(expected_result, result)
+
+    def test_task530a(self):
+        expected_result = 25502500 #сумма кубов всех чисел от 1 до 100
+        result = task530a(100) #до скольки считать
         assert_equal(expected_result, result)
