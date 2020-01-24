@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -384,4 +384,14 @@ class TestOperators(unittest.TestCase):
     def test_task530a(self):
         expected_result = 25502500 #сумма кубов всех чисел от 1 до 100
         result = task530a(100) #до скольки считать
+        assert_equal(expected_result, result)
+
+    def test_task532(self):
+        expected_result = 3.283333333333333 #итоговая сумма
+        result = task532(5) #до скольки поднимать делитель
+        assert_equal(expected_result, result)
+
+    def test_task533(self):
+        expected_result = 1.9166666666666665 #итоговая сумма
+        result = task533(1, 3, 2, 5) #1 первый/последний делитель, первое/последнее делимое
         assert_equal(expected_result, result)

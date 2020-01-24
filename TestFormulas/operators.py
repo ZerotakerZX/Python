@@ -320,3 +320,35 @@ def task530a(end):
     cube_sum = sum(the_cube) #и найте сумму их
     result = cube_sum
     return result
+
+def task532(end):
+    start = 1
+    step = 1
+    end = end + 1 #на случай ввода максимального числа с клавы
+    all_numbers = [] #это будет делимое
+    the_dividend = [1, 1, 1, 1, 1] #делитель из условия задачи
+    division_total = [] #тут будет список - результат деления всех дробных
+    for i in range(start, end, step):
+        all_numbers.append(i) #добавить в переменную-список все нужные числа - делитель
+    for i in range(0, len(the_dividend)):
+        division_total.append(the_dividend[i] / all_numbers[i]) #взять делимое и поделить каждое число на делитель
+    fraction_sum = 1 + sum(division_total) #и найте сумму их, прибавленную к единице
+    result = fraction_sum
+    return result
+
+def task533(start, end, start2, end2):
+    step = 1 #степ общий для обоих
+    end = end + 1 #на случай ввода максимального числа с клавы
+    end2 = end2 + 1  # на случай ввода максимального числа с клавы
+    all_numbers1 = [] #это будет делимое
+    all_numbers2 = [] #это будет делитель
+    division_total = [] #тут будет список - результат деления всех дробных
+    for i in range(start, end, step):
+        all_numbers1.append(i) #добавить в переменную-список все нужные числа - делимое
+    for i in range(start2, end2, step):
+        all_numbers2.append(i) #добавить в переменную-список все нужные числа - делимое
+    for i in range(0, len(all_numbers1)):
+        division_total.append(all_numbers1[i] / all_numbers2[i]) #взять делимое и поделить каждое число на делитель
+    fraction_sum = sum(division_total) #и найте сумму их
+    result = fraction_sum
+    return result
