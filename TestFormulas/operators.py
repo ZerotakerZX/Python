@@ -352,3 +352,27 @@ def task533(start, end, start2, end2):
     fraction_sum = sum(division_total) #и найте сумму их
     result = fraction_sum
     return result
+
+def task538a(road_length, husband_cycle):
+    current_position = 0 #переменная показывающая текущие координаты мужа
+    current_position = current_position + road_length #фаза0, муж пришёл на работу
+    for x in range(1, husband_cycle + 1):
+        current_position = (current_position - (road_length / 2)) #фаза1, муж первый раз передумал и пошёл на дом
+        current_position = (current_position + (road_length / 3)) #фаза2, муж второй раз передумал и пошёл на работу
+        current_position = (current_position - (road_length / 4)) #фаза3, муж третий раз передумал и пошёл на дом
+        result = current_position
+    return result
+
+def task538b(road_length, husband_cycle):
+    current_position = 0 #переменная показывающая текущие координаты мужа
+    current_position = current_position + road_length #фаза0, муж пришёл на работу
+    total_travel = 1000 #сколько муж прошёл уже после фазы0
+    for x in range(1, husband_cycle + 1):
+        current_position = (current_position - (road_length / 2)) #фаза1, муж первый раз передумал и пошёл на дом
+        total_travel = (total_travel + (road_length / 2))  # сколько прошёл муж после фазы1
+        current_position = (current_position + (road_length / 3)) #фаза2, муж второй раз передумал и пошёл на работу
+        total_travel = (total_travel + (road_length / 3))  # сколько прошёл муж после фазы2
+        current_position = (current_position - (road_length / 4)) #фаза3, муж третий раз передумал и пошёл на дом
+        total_travel = (total_travel + (road_length / 4))  # сколько прошёл муж после фазы3
+        result = total_travel
+    return result
