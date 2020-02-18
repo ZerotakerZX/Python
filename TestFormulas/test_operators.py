@@ -1,6 +1,7 @@
 import unittest
+import numpy as np
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task61b, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -29,7 +30,7 @@ class TestOperators(unittest.TestCase):
         result = task410(a, b)
         assert_equal(result, 'circle')
 
-    def test_task410(self): #тест на квадарт
+    def test_task410a(self): #тест на квадарт
         a = 1
         b = 2
         result = task410(a, b)
@@ -41,7 +42,7 @@ class TestOperators(unittest.TestCase):
         result = task411(a, b)
         assert_equal(result, a)
 
-    def test_task411(self): #тест на B
+    def test_task411a(self): #тест на B
         a = tuple([4, 2])
         b = tuple([2, 2])
         result = task411(a, b)
@@ -204,7 +205,7 @@ class TestOperators(unittest.TestCase):
         d = 2
         e = 1
         result = task466(a, b, c, d, e)
-        expected_result = ('upward_position')
+        expected_result = 'upward_position'
         assert_equal(result, expected_result) #тест на нормальную кость
 
         a = 20
@@ -213,7 +214,7 @@ class TestOperators(unittest.TestCase):
         d = 2
         e = 3
         result = task466(a, b, c, d, e)
-        expected_result = ('normal_position')
+        expected_result = 'normal_position'
         assert_equal(result, expected_result) #тест слишком толстую кость
 
         a = 20
@@ -222,13 +223,13 @@ class TestOperators(unittest.TestCase):
         d = 3
         e = 2
         result = task466(a, b, c, d, e)
-        expected_result = ('side_position')
+        expected_result = 'side_position'
         assert_equal(result, expected_result) #тест слишком широкую кость
 
     def test_task467(self):
         k = 1
         result = task467(k)
-        expected_result = ('work')
+        expected_result = 'work'
         assert_equal(result, expected_result)  #тест на рабочий день
 
     def test_task469(self):
@@ -241,7 +242,7 @@ class TestOperators(unittest.TestCase):
         second_angle_coordinat_hor = 0
         second_angle_coordinat_ver = 0
         result = task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_angle_coordinat_hor, first_angle_coordinat_ver, second_angle_coordinat_hor, second_angle_coordinat_ver)
-        expected_result = ("второй принадлежит первому")
+        expected_result = "второй принадлежит первому"
         assert_equal(result, expected_result)  #тест на все точки первого принадлежат второму
 
         first_hor_lenght = 10 #параметры первого прямоугольника
@@ -253,7 +254,7 @@ class TestOperators(unittest.TestCase):
         second_ver_start = 0
         second_hor_start = 0
         result = task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_ver_start, second_hor_start)
-        expected_result = ("первый принадлежит второму")
+        expected_result = "первый принадлежит второму"
         assert_equal(result, expected_result)  #тест на все точки второй принадлежит первому.
 
         first_hor_lenght = 10 #параметры первого прямоугольника
@@ -265,7 +266,7 @@ class TestOperators(unittest.TestCase):
         second_ver_start = 0
         second_hor_start = 0
         result = task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_ver_start, second_hor_start)
-        expected_result = ("не пересекаются")
+        expected_result = "не пересекаются"
         assert_equal(result, expected_result)  #тест что не пересекаются
 
         first_hor_lenght = 1 #параметры первого прямоугольника
@@ -277,7 +278,7 @@ class TestOperators(unittest.TestCase):
         second_ver_start = 0
         second_hor_start = 0
         result = task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_lenght, first_hor_start, first_ver_start, second_ver_start, second_hor_start)
-        expected_result = ("пересекаются частично")
+        expected_result = "пересекаются частично"
         assert_equal(result, expected_result)  #тест что пересекаются частично
 
     def test_task4100(self):
@@ -288,7 +289,7 @@ class TestOperators(unittest.TestCase):
         expected_result = 2
         assert_equal(result, expected_result)  #тест на 1*2=2
 
-    def test_task4100(self):
+    def test_task4100a(self):
         first = 6
         second = 5
         third = 4
@@ -415,4 +416,138 @@ class TestOperators(unittest.TestCase):
         road_length = 1000 #длинна дороги  в м.
         husband_cycle = 100 #количество муже-циклов
         result = task538b(road_length, husband_cycle)
+        assert_equal(expected_result, result)
+
+    def test_task570(self):
+        expected_result = [4, 8, 16, 32, 64, 128, 256, 512] #ответ в клетках на такой-то час
+        time_elapsed = [3, 6, 9, 12, 16, 19, 21, 24] #контрольные часы
+        cells = 2 #изначальное кол-во клеток
+        result = task570(time_elapsed, cells)
+        assert_list_equal(expected_result, result)
+
+    def test_task571b(self):
+        expected_result = [1020, 1040, 1060, 1081, 1102, 1124, 1146, 1168, 1191, 1214, 1238, 1262, 1287] #прирост по месяцам
+        deposit = 1000 #изначальный вклад
+        time = 12 #длительность вклада в месяцах
+        allowance = 2 #рост в процентах
+        result = task571b(deposit, time, allowance)
+        assert_list_equal(expected_result, result)
+
+    def test_task571a(self):
+        expected_result = [20, 40, 60, 81, 102, 124, 146, 168, 191, 214, 238, 262, 287] #прирост по месяцам
+        deposit = 1000 #изначальный вклад
+        time = 12 #длительность вклада в месяцах
+        allowance = 2 #рост в процентах
+        result = task571a(deposit, time, allowance)
+        assert_list_equal(expected_result, result)
+
+    def test_task572a(self):
+        expected_result = [11000, 12100, 13310, 14641, 16105, 17715, 19486, 21434, 23577, 25934, 28527] #пробеги по дням
+        run = 10000 #изначальный пробег в метрах
+        days = 10 #кол-во дней
+        gain = 10 #ежедневный прирост в процентах
+        result = task572a(run, days, gain)
+        assert_list_equal(expected_result, result)
+
+    def test_task572b(self):
+        expected_result = 125791 #пробеги по дням
+        run = 10000 #изначальный пробег в метрах
+        days = 7 #кол-во дней
+        gain = 10 #ежедневный прирост в процентах
+        result = task572b(run, days, gain)
+        assert_equal(expected_result, result)
+
+    def test_task573a(self): #а) урожайность за второй, третий, ..., восьмой год;
+        expected_result = [2100, 2200, 2300, 2400, 2520, 2640, 2760, 2880, 3020] #урожаи по годам
+        s = 100 #площадь поля
+        harvest = 20 #урожайтность в центнерах на гектар
+        harvest_gain = 2 #ежегодной прирост к урожайности в процентнах
+        s_gain = 5  #ежегодной прирост к площади в процентнах
+        year = 8 #кол-во лет
+        result = task573a(harvest, s, harvest_gain, s_gain, year)
+        assert_list_equal(expected_result, result)
+
+    def test_task573b(self): #б) площадь участка в четвертый, пятый, ..., седьмой год
+        expected_result = [105, 110, 115, 120, 126, 132, 138, 144] #площадь по годам
+        s = 100 #площадь поля
+        harvest = 20 #урожайтность в центнерах на гектар
+        harvest_gain = 2 #ежегодной прирост к урожайности в процентнах
+        s_gain = 5  #ежегодной прирост к площади в процентнах
+        year = 7 #кол-во лет
+        result = task573b(harvest, s, harvest_gain, s_gain, year)
+        assert_list_equal(expected_result, result)
+
+    def test_task573v(self): # В какой урожай будет собран за первые шесть лет
+        expected_result = 16920 #урожаи итого
+        s = 100 #площадь поля
+        harvest = 20 #урожайтность в центнерах на гектар
+        harvest_gain = 2 #ежегодной прирост к урожайности в процентнах
+        s_gain = 5  #ежегодной прирост к площади в процентнах
+        year = 6 #кол-во лет
+        result = task573v(harvest, s, harvest_gain, s_gain, year)
+        assert_equal(expected_result, result)
+
+    def test_task574(self): # Определить суммарный объем в литрах двенадцати вложенных друг в друга шаров со стенками толщиной 5 мм. Внутренний диаметр внутреннего шара равен 10 см. Принять, что шары вкладываются друг в друга без зазоров.
+        expected_result = 5567.453333333334 #объём в литрах
+        shell_width = 0.5 #толщина стенки в см
+        internal_d = 10 #Внутренний диаметр внутреннего шара в см
+        number = 12 #число шаров
+        result = task574(shell_width, internal_d, number)
+        assert_equal(expected_result, result)
+
+    def test_task575(self):
+        expected_result = 60 #сумма
+        num = 2 #исходное число
+        deg = 5 #степень до которой повышать
+        result = task575(num, deg)
+        assert_equal(expected_result, result)
+
+    def test_task576(self):
+        expected_result = 60 #сумма
+        num = 2 #исходное число
+        deg = 5 #степень до которой повышать
+        result = task576(num, deg)
+        assert_equal(expected_result, result)
+
+    def test_task581(self): #Даны натуральные числа х и у. Вычислить произведение x y , используя лишь операцию сложения.
+        expected_result = 6 #сумма
+        x = 2 #число раз
+        y = 3 #число два
+        result = task581(x, y)
+        assert_equal(expected_result, result)
+
+    def test_task61b(self): #найти количество всех чисел последовательности.
+        expected_result = 6 #сумма
+        seq = [5, 4, 3, 2, 1, 0] #последовательность чисел
+        result = task61b(seq)
+        assert_equal(expected_result, result)
+
+    def test_task62(self): #найти количество всех чисел последовательности.
+        expected_result = 3 #сумма
+        seq = [5, 4, 3, 2, 1, -1] #последовательность чисел
+        result = task62(seq)
+        assert_equal(expected_result, result)
+
+    """def test_task65(self): #Дана последовательность целых чисел в начале которой записано несколько равных между собой элементов. Определить количество таких элементов последовательности. Условный оператор не использовать.
+        expected_result = 3 #колво
+        seq = [1, 1, 1, 2, 3, 4] #последовательность чисел
+        result = task65(seq)
+        assert_equal(expected_result, result)"""
+
+    def test_task69(self): #Среди чисел 1, 4, 9, 16, 25, ... найти первое число, большее n.
+        expected_result = 20 #первое число больше 15
+        seq = [5, 10, 15, 20, 25, 30] #последовательность чисел
+        result = task69(seq)
+        assert_equal(expected_result, result)
+
+    def test_task610a(self): #Напечатать те натуральные числа, квадрат которых не превышает n.
+        expected_result = [0, 1, 2, 3]
+        n = 2
+        result = task610a(n)
+        assert_list_equal(expected_result, result)
+
+    def test_task610b(self): #Найти первое натуральное число, квадрат которого больше n.
+        expected_result = 2
+        n = 2
+        result = task610b(n)
         assert_equal(expected_result, result)

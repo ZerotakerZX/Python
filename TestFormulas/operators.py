@@ -1,3 +1,5 @@
+import numpy
+
 def task47(a, b):
     if a > b:
         return b, a
@@ -161,6 +163,7 @@ def task469(first_hor_lenght, first_ver_lenght, second_hor_lenght, second_ver_le
     return "пересекаются частично"
 
 def task4100(first, second, third):
+    global b, a
     if first < second and first < third:
         a = first #если первое число - первое наименьшее
         if second < third:
@@ -376,3 +379,181 @@ def task538b(road_length, husband_cycle):
         total_travel = (total_travel + (road_length / 4))  # сколько прошёл муж после фазы3
         result = total_travel
     return result
+
+def task570(time_elapsed, cells):
+    cells_log = [] #список куда будет записано число клеток в контрольные часы
+    start = time_elapsed[0] #найти стартый подсчёта клеток после деления
+    end = time_elapsed[-1] + 1 #правильный момент для остановки
+    step = time_elapsed[1] - time_elapsed[0] #найти размер шага между контрольными часами
+    for i in range(start, end, step): #правильный цикл деления клеток по часам
+        while (i % step) == 0: #чтобы знать когда контрольный час пробил
+            cells = cells * 2 #формула деления клеток
+            cells_log.append(cells) #запись клеток по часам в специальный лог
+            break
+    result = cells_log
+    return result
+
+def task571b(deposit, time, allowance):
+    deposit_log = [] #список куда будет записано состояние счёта каждый месяц
+    precent = allowance / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, time + 1, 1): #правильный цикл по длительности вклада
+        while (i % 1) == 0: #чтобы знать когда кончился месяц и пора начислять
+            deposit = deposit + int((deposit * precent)) #формула получения прибыли без копеек (может лучше делать через round, но это не точно)
+            deposit_log.append(deposit) #запись прибыли по месяцам в специальный лог
+            break #без него процесс длиться бесконечно
+    result = deposit_log
+    return result
+
+def task571a(deposit, time, allowance):
+    income_log = [] #список куда будет записано кол-во прибыли каждый месяц
+    deposit_original = deposit #запомнить изначальную сумму
+    precent = allowance / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, time + 1, 1): #правильный цикл по длительности вклада
+        while (i % 1) == 0: #чтобы знать когда кончился месяц и пора начислять
+            deposit = deposit + int((deposit * precent)) #формула получения прибыли без копеек (может лучше делать через round, но это не точно)
+            income_log.append(deposit - deposit_original) #вычисление прироста каждый месяц по сравнению с оригиналом
+            break #без него процесс длиться бесконечно
+    result = income_log
+    return result
+
+def task572a(run, days, gain):
+    run_log = [] #список куда будет записана пробежка каждый день
+    per_gain = gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, days + 1, 1): #правильный цикл по тренировок
+        while (i % 1) == 0: #чтобы знать когда кончился день
+            run = run + int((run * per_gain)) #формула роста длинны пробега
+            run_log.append(run) #записать результаты пробега в список
+            break #без него процесс длиться бесконечно
+    result = run_log
+    return result
+
+def task572b(run, days, gain):
+    run_log = [] #список куда будет записана пробежка каждый день
+    per_gain = gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, days + 1, 1): #правильный цикл по тренировок
+        while (i % 1) == 0: #чтобы знать когда кончился день
+            run = run + int((run * per_gain)) #формула роста длинны пробега
+            run_log.append(run) #записать результаты пробега в список
+            break #без него процесс длиться бесконечно
+    result = sum(run_log)
+    return result
+
+def task573a(harvest, s, harvest_gain, s_gain, year):
+    harvest_log = [] #список куда будет записан урожай по годам
+    harvest_gain = harvest_gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    s_gain = s_gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, year + 1, 1): #цикл на 8 лет
+        while (i % 1) == 0: #чтобы знать когда кончился год
+            s = s + int((s * s_gain))  # ежегодный рост площади
+            harvest = harvest + int((harvest * harvest_gain)) #ежегодный прирост урожайности на гектар
+            harvest_log.append(harvest * s) #перемножить фертильность на площадь и записать в список результат
+            break #без него процесс длиться бесконечно
+    result = harvest_log
+    return result
+
+def task573b(harvest, s, harvest_gain, s_gain, year):
+    s_log = [] #список куда будет записан урожай по годам
+    harvest_gain = harvest_gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    s_gain = s_gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, year + 1, 1): #цикл на 8 лет
+        while (i % 1) == 0: #чтобы знать когда кончился год
+            s = s + int((s * s_gain))  # ежегодный рост площади
+            s_log.append(s) #перемножить фертильность на площадь и записать в список результат
+            break #без него процесс длиться бесконечно
+    result = s_log
+    return result
+
+def task573v(harvest, s, harvest_gain, s_gain, year):
+    harvest_log = [] #список куда будет записан урожай по годам
+    harvest_gain = harvest_gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    s_gain = s_gain / 100 #конвертация процентов в более подходящий формат для расчётов
+    for i in range(0, year + 1, 1): #цикл на 8 лет
+        while (i % 1) == 0: #чтобы знать когда кончился год
+            s = s + int((s * s_gain))  # ежегодный рост площади
+            harvest = harvest + int((harvest * harvest_gain)) #ежегодный прирост урожайности на гектар
+            harvest_log.append(harvest * s) #перемножить фертильность на площадь и записать в список результат
+            break #без него процесс длиться бесконечно
+    result = sum(harvest_log)
+    return result
+
+def task574(shell_width, internal_d, number):
+    internal_r = internal_d / 2 # внутренний радиус - нужно для решения задачи.
+    v_internal = ((internal_r**3 * 3.14) / 3) * 4 #Объем шара пустоты внутри равен четырем третим от его радиуса в кубе помноженого на число пи.
+    external_r = (internal_r + (number * shell_width)) #считаем радинус стенок внутреннего шара и всех последующих
+    v_external = ((external_r**3 * 3.14) / 3) * 4 #Объем пространства в целом
+    result = v_external - internal_r #объём самих шаров это объём в целом, минус пустота внутри первого шара
+    return result
+
+def task575(num, deg):
+    degs = [] #тут будут все степени в виде списка
+    nums = []  #тут будут все степени в виде списка
+    for i in range(2, deg + 1, 1):
+        degs.append(i)
+        while i == 2:
+            nums.append(num * num)
+            break
+        while i == 3:
+            nums.append(num * num * num)
+            break
+        while i == 4:
+            nums.append(num * num * num * num)
+            break
+        while i == 5:
+            nums.append(num * num * num * num * num)
+            break #вот это вот всё вместо возведения  в степень
+    result = sum(nums)
+    return result
+
+def task576(num, deg):
+    degs = [] #тут будут все степени в виде списка
+    nums = []  #тут будут все степени в виде списка
+    prod = [num]  # тут будет список с помощью кторого будет возводиться в нужную степерь
+    prod2 = [] #после ручного возведения в степень результаты будут тут, чтобы потом суммироваться
+    for i in range(2, deg + 1, 1):
+        degs.append(i)
+        while(i % 1) == 0: #чтобы знать когда кончился цикл
+            prod.append(num) #цифра добавлятся в список столько раз, какая нужна степерь
+            prod2.append(numpy.prod(prod)) #содержимое списка перемножается в нужную степерь и пишетсяся сюда
+            break
+    result = sum(prod2)
+    return result
+
+def task581(x, y):
+    prod = []  #сюда будет дублироваться цифра столько раз, на сколько её нужно умножить
+    for i in range(0, y, 1):
+        while (i % 1) == 0:  # чтобы знать когда кончился цикл
+            prod.append(x)  # запись цифры нужное число раз
+            break
+    result = sum(prod)
+    return result
+
+def task61b(seq):
+    result = len(seq)
+    return result
+
+def task62(seq):
+    result = sum(seq[:-1]) / len(seq[:-1])
+    return result
+
+"""def task65(seq):
+    ab = seq[0:1]
+    result = seq.count(ab)
+    return result"""
+
+def task69(seq):
+    for i in seq:
+        if i > 15:
+            return i
+
+def task610a(n):
+    nl = []
+    for i in range(0, 999, 1):
+        while i < (n * n):
+            nl.append(i)
+            break
+    return nl
+
+def task610b(n):
+    for i in range(0, 999, 1):
+        if (i * i) > n:
+            return i
