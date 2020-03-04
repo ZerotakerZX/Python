@@ -557,3 +557,113 @@ def task610b(n):
     for i in range(0, 999, 1):
         if (i * i) > n:
             return i
+
+def task612(a):
+    for i in range(1, 999, 1): #диапозон чисел которые будем перебирать
+            if 1 + (1 / i) < a: #требуемуе условия когда подобор остановится
+                return 1 + (1 / i) #и вернёт число которое при них получается, т.е. первое меньше а
+
+def task613(a):
+    n_list = [] #тут будте записан список значений n при которых выполняется условие
+    for n in range(1, 999, 1): #перечень цифр для перебора
+        while 1 + (1 / n) >= a: #сам условия
+            n_list.append(n) #годные значения пишутся в перечень
+            break
+    return n_list #заполненный перечень возрвращается
+
+def task614(a):
+    temp_seq = [] #временный список для результатов вычесления последовательности 1+1/2 1+1/3... 1+1/n
+    for n in range(1, 999, 1): #перечень цифр для перебора
+        temp_seq.append(1 + (1 / n)) #запись последовательностей в список
+        if temp_seq[-1] < a: #дождаться пока последний элемент в списке станет меньше а
+            break
+    return n #и вернуть текущие значение n
+
+def task616(n):
+    temp_seq = [] #временный список для результатов вычесления последовательности 1, 1+1/2 1+1/3... 1+1/n
+    for i in range(1, 999, 1): #перечень цифр для перебора
+        temp_seq.append(1 + (1 / i)) #запись последовательностей в список
+        if sum(temp_seq) > n: #дождаться сумма последовательности станет больше числа n
+            break
+    return sum(temp_seq) #и вернуть эту сумму
+
+def task617(a):
+    temp_seq = [] #временный список для результатов вычесления последовательности 1, (1+1/2)+(1+1/3)...(1+1/n)
+    n_seq = [] #хранилище походящих значений n
+    for n in range(1, 50, 1): #перечень цифр для перебора
+        temp_seq.append(1 + (1 / n)) #запись последовательностей в список
+        while sum(temp_seq) > a: #дождаться сумма последовательности станет больше числа a
+            n_seq.append(n)  #запись подходящих чисел n в отдельный список
+            break
+    return n_seq #и вернуть эти n-ки
+
+def task619(dem1, dem2, num1, num2):
+    num_log = [] #лог всех числителей
+    den_log = [] #лог всех знаменателей
+    eq_log = [] #лог вычеслинных уравнений
+    num_log.append(num1) #добавляем в логи указанное уже в условиях задачи
+    den_log.append(dem1) #добавляем в логи указанное уже в условиях задачи
+    num_log.append(num2) #добавляем в логи указанное уже в условиях задачи
+    den_log.append(dem2) #добавляем в логи указанное уже в условиях задачи
+    eq_log.append(num1 / dem1) #добавляем в логи указанное уже в условиях задачи
+    eq_log.append(num2 / dem2) #добавляем в логи указанное уже в условиях задачи
+    for i in range(0, 999, 1): #запуск цикла
+        num = sum(num_log[-2:]) #суммируем два последних числителя, чтобы получить текущий новый числитель
+        num_log.append(num) #и добавляем в лог для сохранности
+        den = sum(den_log[-2:]) #тоже самое для знаменателя
+        den_log.append(den) #тоже самое для знаменателя
+        eq = num / den #делим текущий числитель на текущий знаменатель чтобы получить текущий результат деления дроби
+        eq_log.append(eq) #и его тоже пишем в лог для сохранности
+    if (eq_log[-1] - eq_log[-2]) <= 000.1:
+        return eq
+
+def task622g(number):
+    list_number = [] #список где будет лежать распиленное на цифры число
+    list_number_aux = [] #список из списка, где будут подходящие числа (выше 5)
+    alt_number = str(number) #число в виде строки
+    for digit in alt_number:
+        list_number.append(int(digit)) #функция что распиливает число и добоавляет в список
+    for i in list_number:
+        if i > 5:
+            list_number_aux.append(i) #выписываем числа выше пяти в другой список
+    return sum(list_number_aux)  #и возвращаем их сумумм
+
+def task622d(number):
+    list_number = [] #список где будет лежать распиленное на цифры число
+    list_number_aux = [] #список из списка, где будут подходящие числа (выше 7)
+    alt_number = str(number) #число в виде строки
+    for digit in alt_number:
+        list_number.append(int(digit)) #функция что распиливает число и добоавляет в список
+    for i in list_number:
+        if i > 7:
+            list_number_aux.append(i) #выписываем числа выше пяти в другой список
+    return numpy.prod(list_number_aux)  #и возвращаем их произведение
+
+def task622e(number):
+    list_number = [] #список где будет лежать распиленное на цифры число
+    list_number_aux = [] #список из списка, где будут подходящие числа (выше 7)
+    alt_number = str(number) #число в виде строки
+    for digit in alt_number:
+        list_number.append(int(digit)) #функция что распиливает число и добоавляет в список
+    for i in list_number:
+        if i == 0:
+            list_number_aux.append(i) #считаем нолики
+    for i in list_number:
+        if i == 5:
+            list_number_aux.append(i)  #считаем однёрки
+    return len(list_number_aux)  #и возвращаем длинну списка с выписынамми числами
+
+def task628a(number):
+    string_number = str(number) #переводим число в строку
+    index_number = (string_number.index(max(string_number)))
+    return index_number - len(string_number) #разница между двумя числами покажет где нужное число с конца
+
+def task628b(number):
+    string_number = str(number) #переводим число в строку
+    return(string_number.index(min(string_number))) + 1 #+1 чтобы компенсировать отсчёт с нуля
+
+def task630(number, target):
+    string_number = str(number) #переводим число в строку
+    index_number = (string_number.index(str(target))) #указывает индекс самой левой (первой) 8-ки
+    return index_number - len(string_number) #разница между двумя числами покажет где нужное число с конца
+    return 0

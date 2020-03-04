@@ -1,7 +1,6 @@
 import unittest
-import numpy as np
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task61b, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task628a, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -404,7 +403,7 @@ class TestOperators(unittest.TestCase):
         result = task538a(road_length, husband_cycle)
         assert_equal(expected_result, result)
 
-    def test_task538a(self):
+    def test_task538aa(self):
         expected_result = -40666.666666666664 #ответ в метрах
         road_length = 1000 #длинна дороги  в м.
         husband_cycle = 100 #количество муже-циклов
@@ -550,4 +549,80 @@ class TestOperators(unittest.TestCase):
         expected_result = 2
         n = 2
         result = task610b(n)
+        assert_equal(expected_result, result)
+
+    def test_task612(self): #Дано число а (1 < а 1,5). Среди чисел 1+1/2 1+1/3... найти первое меньше а
+        expected_result = 1.25
+        a = 1.33
+        result = task612(a)
+        assert_equal(expected_result, result)
+
+    def test_task613(self): #Рассмотрим последовательность чисел: 1+1/2 1+1/3... 1+1/n. Напечатать все значения n, при которых все числа последовательности будут не меньше а (1 < а 1,5).
+        expected_result = [1, 2, 3]
+        a = 1.33
+        result = task613(a)
+        assert_list_equal(expected_result, result)
+
+    def test_task614(self): #Дано число а (1 < а 1,5). Найти такое наименьшее n, что в последовательности чисел 1+1/2 1+1/3... 1+1/n последнее число будет меньше а.
+        expected_result = 4
+        a = 1.33
+        result = task614(a)
+        assert_equal(expected_result, result)
+
+    def test_task616(self): #Среди чисел 1, (1+1/2)+(1+1/3)...  найти первое, больше числа n.
+        expected_result = 3.5
+        n = 2
+        result = task616(n)
+        assert_equal(expected_result, result)
+
+    def test_task617(self): #Дано вещественное число а. Напечатать все значения n, при которых 1, (1+1/2)+(1+1/3)...(1+1/n) > a
+        expected_result = [46, 47, 48, 49]
+        a = 50
+        result = task617(a)
+        assert_list_equal(expected_result, result)
+
+    def test_task619(self): #Рассмотрим последовательность, образованную дробями: 1/1, 2/1, 3/2, ...,в которой числитель знаменатель) следующего члена последовательностиполучается сложением числителей (знаменателей) двух предыдущих ленов. Числители двух первых дробей равны 1 и 2, знаменатели — 1 и 1. Найти первый член такой следовательности, который отличается от предыдущего члена не более чем на 0,001.
+        expected_result = 1.618033988749895
+        num1 = 1 #числитель
+        den1 = 1 #знаменатель
+        num2 = 2 #числитель
+        den2 = 1 #знаменатель
+        result = task619(den1, den2, num1, num2)
+        assert_equal(expected_result, result)
+
+    def test_task622g(self): #найти сумму его цифр, больших пяти.
+        expected_result = 14
+        number = 2468
+        result = task622g(number)
+        assert_equal(expected_result, result)
+
+    def test_task622d(self): #произведение его цифр, больших семи;
+        expected_result = 64
+        number = 2488
+        result = task622d(number)
+        assert_equal(expected_result, result)
+
+    def test_task622e(self): #сколько раз в нем встречаются цифры 0 и 5 (всего).
+        expected_result = 4
+        number = 5050
+        result = task622e(number)
+        assert_equal(expected_result, result)
+
+    def test_task68a(self): #Дано натуральное число, в котором все цифры различны. Определить:порядковый номер его максимальной цифры, считая номера:от конца числа
+        expected_result = -1 #минус значит что с конца
+        number = 1234
+        result = task628a(number)
+        assert_equal(expected_result, result)
+
+    def test_task68b(self): #Дано натуральное число, в котором все цифры различны. Определить:порядковый номер его минимальной цифры, считая номера:от начала числа
+        expected_result = 1
+        number = 1234
+        result = task628b(number)
+        assert_equal(expected_result, result)
+
+    def test_task630(self): #Дано натуральное число. Определить номер цифры 8 в нем, считая от концачисла. Если такой цифры нет, тветом должно быть число 0, если таких цифр в числе несколько — должен быть определен номер самой левой из них.
+        expected_result = -8 #минус значит что с конца
+        number = 82345678 #самая левая 8-ка стоит в начале
+        target = 8 #число, что ищем
+        result = task630(number, target)
         assert_equal(expected_result, result)
