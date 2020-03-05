@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task628a, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task643, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -625,4 +625,34 @@ class TestOperators(unittest.TestCase):
         number = 82345678 #самая левая 8-ка стоит в начале
         target = 8 #число, что ищем
         result = task630(number, target)
+        assert_equal(expected_result, result)
+
+    def test_task631(self): #Дано натуральное число. Определить, сколько раз в нем встречается максимальная цифра
+        expected_result = 2 #две 8-ки
+        number = 82345678 # 8ка тут самая большая
+        result = task631(number)
+        assert_equal(expected_result, result)
+
+    def test_task632(self): #Дано натуральное число. Определить, сколько раз в нем встречается минимальная цифра
+        expected_result = 1 #одна 2-ки
+        number = 82345678 # 2ка тут самая мелкая
+        result = task632(number)
+        assert_equal(expected_result, result)
+
+    def test_task633(self): #Напечатать все кратные тринадцати натуральные числа, меньшие 100.
+        expected_result = [13, 26, 39, 52, 65, 78, 91]
+        number = 100 # до скольки считать
+        result = task633(number)
+        assert_list_equal(expected_result, result)
+
+    def test_task643(self): #Дана непустая последовательность вещественных чисел, оканчивающаясячислом 100. Последовательность является неубывающей. Несколько чисел,идущих подряд, равны между собой. Сколько различных чисел имеется в последовательности?
+        expected_result = 5 #сколько РАЗНЫХ значений в последовательности
+        seq = [20, 20, 40, 60, 80, 100] #последовательность
+        result = task643(seq)
+        assert_equal(expected_result, result)
+
+    def test_task643b(self): #Дана непустая последовательность вещественных чисел, оканчивающаясячислом 100. Последовательность является неубывающей. Несколько чисел,идущих подряд, равны между собой. Найти количество таких чисел?
+        expected_result = 2 #сколько образчиков чисел имеют дубли, их две - 20 и 40
+        seq = [20, 20, 40, 40, 60, 80, 100] #20 и 40 имеют дубли
+        result = task643b(seq)
         assert_equal(expected_result, result)
