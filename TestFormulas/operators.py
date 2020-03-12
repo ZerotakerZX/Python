@@ -775,6 +775,7 @@ def task643(seq):
     return len(list(dict.fromkeys(seq)))  # превращает список в словарь, где нет дублей, и возврщает длинну
 
 
+
 def task643b(seq):
     temp = [0] #временный список где будут храниться цифры для счёта, для удобства он не пустой
     count = 0 #здесь будет вестись счёт сколько раз встретилиьс дубли
@@ -783,3 +784,16 @@ def task643b(seq):
         if i == temp[-2]: #когда в список пишется последнее число, оно сравнивается с предпоследним
             count = count + 1 #и если они одинаковые, то счётчтик тикает на один вверх
     return count #и возвращает что набежало
+
+def task651(number):
+    str_number = str(number) #конвертим в строку
+    if str_number[::-1]: #и пробуем её прочесть наоборот
+        return True
+
+def task653(number):
+    list = []
+    str_number = str(number)
+    str_number_inv = str_number[::-1]
+    for i in str_number_inv:
+        list.append(int(i)) #кое как обратили число и превратили в список цифр
+    return all(i < j for i, j in zip(list, list[1:])) #можно просчитать два числа разом, одно начав с начала списка, другое со второй позиции

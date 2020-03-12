@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task643, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task653, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -656,3 +656,15 @@ class TestOperators(unittest.TestCase):
         seq = [20, 20, 40, 40, 60, 80, 100] #20 и 40 имеют дубли
         result = task643b(seq)
         assert_equal(expected_result, result)
+
+    def test_task651(self): #Дано натуральное число. Выяснить, является ли оно палиндромом ("перевертышем"), т. е. числом,десятичная запись которого читается одинаково слева направо и справа налево.
+        expected_result = True
+        number = 696
+        result = task651(number)
+        assert_true(expected_result, result)
+
+    def test_task653(self): #Дано натуральное число. Установить, является ли последовательность егоцифр при просмотре их справа налево упорядоченной по возрастанию. Например, для числа 5321 ответ положительный, для чисел 7820 и 9663 — отрицательный и т. п.
+        expected_result = True
+        number = 4321
+        result = task653(number)
+        assert_true(expected_result, result)
