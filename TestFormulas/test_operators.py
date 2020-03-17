@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task653, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -668,3 +668,79 @@ class TestOperators(unittest.TestCase):
         number = 4321
         result = task653(number)
         assert_true(expected_result, result)
+
+    def test_task654(self): #Дано натуральное число. Установить, является ли последовательность его цифр при просмотре их справа налево упорядоченной по возрастанию. Например, для числа 5321 ответ положительный, для чисел 7820 и 9663 — отрицательный и т. п
+        expected_result = True
+        number = 1234
+        result = task654(number)
+        assert_true(expected_result, result)
+
+    def test_task655(self): #Дано натуральное число. Установить, является ли последовательность его цифр при просмотре их слева направо упорядоченной по возрастанию. Например, для числа 1478 ответ положительный, для чисел 1782 и668 — отрицательный и т. п.
+        expected_result = True
+        number = 1234
+        result = task655(number)
+        assert_true(expected_result, result)
+
+    def test_task656(self): #. Дано натуральное число. Установить, является ли последовательность его цифр при просмотре их слева направо упорядоченной по неубыванию. Например, для чисел 1368 и 1669 ответ положительный, для числа 1782 — отрицательный и т. п.
+        expected_result = True
+        number = 1234
+        result = task656(number)
+        assert_true(expected_result, result)
+
+    def test_task657(self): #. Дано натуральное число. Установить, является ли последовательность его цифр при просмотре их слева направо упорядоченной по неубыванию. Например, для чисел 1368 и 1669 ответ положительный, для числа 1782 — отрицательный и т. п.
+        expected_result = 10
+        seq = [10, 20, 30, 40]
+        number = 1
+        result = task657(number, seq)
+        assert_equal(expected_result, result)
+
+    def test_task658(self): #. Дана последовательность вещественных чисел Определить, есть ли в последовательности отрицательные числа. В случае положительного ответа определить порядковый номер первого из них.
+        expected_result = 2
+        seq = [1, 2, -3, -4]
+        result = task658(seq)
+        assert_equal(expected_result, result)
+
+    def test_task660(self): #Дана последовательность натуральных чисел Определить, есть ли в последовательности хотя бы одно число, оканчивающееся цифрой 7? В случае положительного ответа определить порядковый номер первого из них
+        expected_result = 6
+        seq = [1, 2, 3, 4, 5, 6, 7]
+        result = task660(seq)
+        assert_equal(expected_result, result)
+
+    def test_task661(self): # Дана непустая последовательность целых чисел, оканчивающаяся числом –1 Определить, есть ли в последовательности хотя бы одно число, кратное семи? В случае положительного ответа определить порядковый номер первого из них
+        expected_result = 3
+        seq = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, -1]
+        result = task661(seq)
+        assert_equal(expected_result, result)
+
+    def test_task666(self): #Дана последовательность целых чисел, оканчивающаяся числом –1. Количество чисел в последовательности не меньше двух. Определить, есть ли в ней хотя бы одна пара одинаковых "соседних" чисел. В случае положительного ответа определить порядковые номера чисел первой из таких пар.
+        expected_result = 11, 10
+        seq = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1, 0, -1]
+        result = task666(seq)
+        assert_equal(expected_result, result)
+
+    def test_task669(self): #Дана последовательность вещественных чисел Определить,является ли последовательность упорядоченной по возрастанию. В случае отрицательного ответа определить порядковый номер первого числа, нарушающего такую упорядоченность.
+        expected_result = 5
+        seq = [1, 2, 3, 4, 5, 0]
+        result = task669(seq)
+        assert_equal(expected_result, result)
+
+    def test_task677(self): #Дано натуральное число. Определить, является ли оно членом последовательности Фибоначчи (первый ивторой члены последовательности равны 1, каждый следующий равен сумме двух предыдущих).
+        expected_result = 5
+        number = 5
+        result = task677(number)
+        assert_equal(expected_result, result)
+
+    def test_task686(self): #Дано натуральное число. Если в нем есть цифры a и b, то определить, какая из них расположена в числе правее. Если одна или обе эти цифры встречаются в числе несколько раз, то должны быть учтены самые правые из одинаковых цифр
+        expected_result = 2
+        a = 1
+        b = 2
+        number = 9122
+        result = task686(number, a, b)
+        assert_equal(expected_result, result)
+
+    def test_task6105(self): #Дан прямоугольник с размерами a b. От него отрезают квадраты максимального размера, пока это возможно. Затем от оставшегося прямоугольника вновь отрезают квадраты максимально возможного размера и т. д. На какие квадраты и в каком их количестве будет разрезан исходный прямоугольник?
+        expected_result = [(3, 100), (1, 10)] #сперва кол-во квадратов, потом их сторона, потом кол-во/сторона следующего и так далее
+        a = 310
+        b = 100
+        result = task6105(a, b)
+        assert_equal(expected_result, result)
