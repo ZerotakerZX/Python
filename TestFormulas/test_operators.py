@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task832, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -743,4 +743,42 @@ class TestOperators(unittest.TestCase):
         a = 310
         b = 100
         result = task6105(a, b)
+        assert_equal(expected_result, result)
+
+    def test_task6108(self): #В некоторой стране используются денежные купюры достоинством в 1, 2, 4,8, 16, 32 и 64. Дано натуральное число n. Как наименьшим количеством таких денежных купюр можно выплатить сумму n (указать количество каждой из используемых для выплаты купюр)? Предполагается, что имеется достаточно большое количество купюр всех достоинств.
+        expected_result = [('B64', 4), ('B32', 1), ('B16', 0), ('B8', 0), ('B4', 1), ('B2', 1), ('B1', 0)]
+        n = 310
+        seq = [1, 2, 4, 8, 16, 32, 64]
+        result = task6108(n)
+        assert_equal(expected_result, result)
+
+    def test_task825(self): #Найти количество делителей каждого из целых чисел от 120 до 130.
+        expected_result = [16, 3, 4, 4, 4, 12, 2, 8, 4, 8]
+        numbers = [120, 121, 122, 123, 125, 126, 127, 128, 129, 130]
+        result = task825(numbers)
+        assert_equal(expected_result, result)
+
+    def test_task829(self): #Найти числа из промежутка у которых ровно 4 делителя
+        expected_result = [122, 123, 125, 129]
+        numbers = [120, 121, 122, 123, 125, 126, 127, 128, 129, 130]
+        result = task829(numbers)
+        assert_equal(expected_result, result)
+
+    def test_task832(self): #Найти 10 первых простых чисел.
+        expected_result = [122, 123, 125, 129]
+        numbers = 1
+        result = task832(numbers)
+        assert_equal(expected_result, result)
+
+    def test_task832(self): #Найти 10 первых простых чисел.
+        expected_result = [122, 123, 125, 129]
+        numbers = 1
+        result = task832(numbers)
+        assert_equal(expected_result, result)
+
+    def test_task835(self): #Найти все целые числа из промежутка от 300 до 600, у которых сумма делителей кратна 10.
+        expected_result = [361, 400, 441, 484, 576, 578]
+        number1 = 300
+        number2 = 600
+        result = task835(number1, number2)
         assert_equal(expected_result, result)
