@@ -991,3 +991,19 @@ def task835(number1, numbers2):
             temp.append(i)
         a = 0
     return temp
+
+def task836(limit):
+    sum = 0 #временная переменная где будет сумма числа
+    perfect_numbers = []
+    for n in range(1, limit, 1): #берём диапозон чисел, для определения соврешнности
+        for i in range(1, limit, 1): #перебор возможных делителей
+            if (n % i == 0):# если число делится на делитель без остатка
+                sum = sum + i #запоминаем текущий делитель
+                if (sum == n): #и если оно ровно самому числу
+                    perfect_numbers.append(n) #радуемся, оно подходит и вносится в список
+        sum = 0 #обнуляем переменную от греха
+    return perfect_numbers #и возвращаем что вышло
+
+def task92(team):
+    print(team, "— это чемпион!")
+    return 1
