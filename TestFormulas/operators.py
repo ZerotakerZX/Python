@@ -991,3 +991,51 @@ def task835(number1, numbers2):
             temp.append(i)
         a = 0
     return temp
+
+def task836(limit):
+    sum = 0 #временная переменная где будет сумма числа
+    perfect_numbers = []
+    for n in range(1, limit, 1): #берём диапозон чисел, для определения соврешнности
+        for i in range(1, limit, 1): #перебор возможных делителей
+            if (n % i == 0):# если число делится на делитель без остатка
+                sum = sum + i #запоминаем текущий делитель
+                if (sum == n): #и если оно ровно самому числу
+                    perfect_numbers.append(n) #радуемся, оно подходит и вносится в список
+        sum = 0 #обнуляем переменную от греха
+    return perfect_numbers #и возвращаем что вышло
+
+def task92(team):
+    print(team, "— это чемпион!")
+    return 1
+
+def task975a(sentence):
+    temp = 0 #временный счётчик
+    for i in sentence:
+        temp +=1 #cчитаем проход через каждую букву
+        if i == ',': #и когда наступает запятая
+            print(sentence[0:temp]) #запоминаемт когда это было и отрезаем предложение до этой длинны
+            return sentence[0:temp]
+
+def task976b(sentence):
+    es = [] #тут будут хранится номера букв е
+    temp = 0 #временный счётчик
+    for i in sentence:
+        temp +=1#cчитаем проход через каждую букву
+        if i == 'е': #запоминаем каждую е в отдельности и пишем в список
+            es.append(temp)
+    return es[-1] #после возвращаем его последнее число
+
+def task989(sentence):
+    for i in sentence:
+        if i == 'с':
+            return 'с'
+        if i == 'т':
+            return 'т'
+
+def task991(sentence):
+   return sentence.replace(' ', '_')
+
+def task992(sentence):
+   sentence_i = sentence[0::2].replace('', 'ы')
+   return sentence_i
+

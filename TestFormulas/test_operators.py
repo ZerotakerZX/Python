@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task832, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task991, task992, task989, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -781,4 +781,40 @@ class TestOperators(unittest.TestCase):
         number1 = 300
         number2 = 600
         result = task835(number1, number2)
+        assert_equal(expected_result, result)
+
+    def test_task836(self): #ННайти все совершенные числа,меньшие 10 000.
+        expected_result = [1, 6, 24, 28, 496, 2016, 8128, 8190]
+        limit = 10000 #до скольки ищем
+        result = task836(limit)
+        assert_equal(expected_result, result)
+
+    def test_task92(self): #Составить программу, которая запрашивает название футбольной команды и повторяет его на экране со словами "— это чемпион!".
+        expected_result = 1
+        team = str(input("Введите своё назание команды"))
+        result = task92(team)
+        assert_equal(expected_result, result)
+
+    def test_task975a(self): #Дано предложение. Напечатать все его символы, предшествующие первой запятой.
+        expected_result = 'казнить,'
+        sentence = "казнить, нельзя помиловать"
+        result = task975a(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task976b(self): #Дано предложение, в котором имеется несколько букв е. найти номер последний
+        expected_result = 19
+        sentence = "еле-еле душа в теле"
+        result = task976b(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task991(self): #Дано предложение, в котором имеются одна буква с и одна буква Т. Определить, какая из них встречается раньше (при просмотре слова слева направо).
+        expected_result = 'шла_саша_по_шоссе'
+        sentence = "шла саша по шоссе"
+        result = task991(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task992(self): #Дано предложение, в котором имеются одна буква с и одна буква Т. Определить, какая из них встречается раньше (при просмотре слова слева направо).
+        expected_result = 'ышыаысышы ыоышысыеы'
+        sentence = "шла саша по шоссе"
+        result = task992(sentence)
         assert_equal(expected_result, result)
