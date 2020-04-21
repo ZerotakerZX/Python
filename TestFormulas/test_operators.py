@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task991, task992, task989, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task991, task992, task9103, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -807,14 +807,52 @@ class TestOperators(unittest.TestCase):
         result = task976b(sentence)
         assert_equal(expected_result, result)
 
-    def test_task991(self): #Дано предложение, в котором имеются одна буква с и одна буква Т. Определить, какая из них встречается раньше (при просмотре слова слева направо).
+    def test_task991(self): #
         expected_result = 'шла_саша_по_шоссе'
         sentence = "шла саша по шоссе"
         result = task991(sentence)
         assert_equal(expected_result, result)
 
-    def test_task992(self): #Дано предложение, в котором имеются одна буква с и одна буква Т. Определить, какая из них встречается раньше (при просмотре слова слева направо).
-        expected_result = 'ышыаысышы ыоышысыеы'
+    def test_task992(self): #Дано предложение. Все его символы, стоящие на четных местах, заменить на ы
+        expected_result = 'шыаысышы ыоышысы'
         sentence = "шла саша по шоссе"
         result = task992(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task992(self): #Дано предложение. Все его символы, стоящие на четных местах, заменить на ы
+        expected_result = 'шыаысышы ыоышысые'
+        sentence = "шла саша по шоссе"
+        result = task992(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task923(self): #Дано предложение. Все его символы, стоящие на третьем, шестом, девятом и т. д. местах, заменить буквой а
+        expected_result = 'шла сашаапоашоасе'
+        sentence = "шла саша по шоссе"
+        result = task993(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9100(self): #Дано слово. Поменять местами его вторую и пятую буквы.
+        expected_result = 'Срвее'
+        sentence = "Север"
+        result = task9100(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9101(self): #Дано слово. Поменять местами его третью и последнюю буквы
+        expected_result = 'Серев'
+        sentence = "Север"
+        result = task9101(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9102(self): #Дано слово. Поменять местами его m-ю и n-ю буквы
+        expected_result = 'ревеС'
+        sentence = "Север"
+        posa = 1
+        posb = 5
+        result = task9102(sentence, posa, posb)
+        assert_equal(expected_result, result)
+
+    def test_task9103(self): #Дано слово из четного числа букв. Поменять местами первую букву со второй, третью — с четвертой и т. д.
+        expected_result = 'ебераг'
+        sentence = "берега"
+        result = task9103(sentence)
         assert_equal(expected_result, result)

@@ -1036,6 +1036,45 @@ def task991(sentence):
    return sentence.replace(' ', '_')
 
 def task992(sentence):
-   sentence_i = sentence[0::2].replace('', 'ы')
-   return sentence_i
+    return ''.join("ы" if i % 2 == 0 else char for i, char in enumerate(sentence, 1))
 
+def task993(sentence):
+    new = ''.join("а" if i % 3 == 0 else char for i, char in enumerate(sentence, 1))
+    new2 = ''.join("а" if i % 6 == 0 else char for i, char in enumerate(new, 1))
+    new3 = ''.join("а" if i % 9 == 0 else char for i, char in enumerate(new2, 1))
+    return new3
+
+def task9100(sentence):
+    a = sentence[1] #запоминаем позицию 2
+    b = sentence[4] #запоминаем позицию 5
+    new = list(sentence) #конвертируем в список
+    new[1] = b #по одной заменяем те же позиции запомненным ранее
+    new[4] = a
+    return ''.join(new) #и возвращаем запомненным ранее
+
+def task9101(sentence):
+    a = sentence[2] #запоминаем позицию 3
+    b = sentence[-1] #запоминаем позицию последнюю
+    new = list(sentence) #конвертируем в список
+    new[2] = b #по одной заменяем те же позиции запомненным ранее
+    new[-1] = a
+    return ''.join(new) #и возвращаем запомненным ранее
+
+def task9102(sentence, posa, posb):
+    posa = posa - 1 #поправка на отсчёт с нуля
+    posb = posb - 1 #поправка на отсчёт с нуля
+    a = sentence[posa] #запоминаем позицию 1
+    b = sentence[posb] #запоминаем позицию 5
+    new = list(sentence) #конвертируем в список
+    new[posa] = b #по одной заменяем те же позиции запомненным ранее
+    new[posb] = a
+    return ''.join(new) #и возвращаем запомненным ранее
+
+def task9103(sentence):
+    odd = list(sentence)[0::2] #сперва берём нечётные буквы
+    evn = list(sentence)[1::2] #потом чётные
+    tmp = [] #временный список
+    for i, j in zip(evn, odd): #берём оба списка разом, но сперва чётные, потом нечётные
+        tmp.append(i) #и записываем и то
+        tmp.append(j) #и другое
+    return ''.join(tmp) #превращаем список в строку и возвращаем
