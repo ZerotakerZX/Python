@@ -1078,3 +1078,42 @@ def task9103(sentence):
         tmp.append(i) #и записываем и то
         tmp.append(j) #и другое
     return ''.join(tmp) #превращаем список в строку и возвращаем
+
+def task9104(sentence):
+   return sentence[::-1] #это тупо слово наоборот выходит по всем условиям
+
+def task9105(sentence):
+   first = sentence[:2] #первые две буквы взять
+   second = sentence[2:8] #и с третьей по девятую
+   third = sentence[9:] #и с десятой до конца
+   second_a = second[::-1] #обращаем среднюю часть
+   return ''.join([first, second_a, third]) #и возвращем что получится
+
+def task9106(sentence, first, last):
+   a = first #позиция первой ключевой буквы
+   b = last - 1 #позиция последней ключевой буквы с поправкой на тсчёт с нуля
+   first = sentence[:first] #отрезать от начала до первой позиции
+   second = sentence[a:b] #и с третьей по девятую
+   third = sentence[b:] #отрезать от конца до второй позиции
+   second_a = second[::-1] #обращаем среднюю часть
+   return ''.join([first, second_a, third]) #и возвращем что получится
+
+def task9107(sentence, buka, buko):
+    len_a = 0 #переменная для хранения координат а
+    len_o = 0 #переменная для хранения координат о
+    for i in sentence:
+        len_a += 1 #ведём счёт
+        if i == 'а': #и прерываем его завидев а
+            break
+        if len_a == len(sentence):
+            return sentence #если искомой буквы нет до самого конца слова, то возвращаем слово как есть
+    for i in sentence: #ведём счёт
+        len_o += 1
+        if i == 'о':  #и прерываем его завидев о
+            break
+        if len_o == len(sentence):
+            return sentence #если искомой буквы нет до самого конца слова, то возвращаем слово как есть
+    tmp1 = list(sentence) #превращем слово в список
+    tmp1[len_a-1] = buko #чтобы заменить в нём а на о
+    tmp1[len_o-1] = buka # и заменить в нём о на а
+    return ''.join(tmp1) #возвращаем, что получилось.
