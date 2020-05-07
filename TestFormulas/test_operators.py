@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task991, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task9108b, task9114, task991, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -883,4 +883,83 @@ class TestOperators(unittest.TestCase):
         buka = 'а'
         buko = 'о'
         result = task9107(sentence, buka, buko)
+        assert_equal(expected_result, result)
+
+
+    def test_task9108b(self): #Устранить имеющуюся в заданном слове ошибку:
+        expected_result = 'графика'
+        sentence = "граффика"
+        result = task9108b(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9109b(self): #Удалить из него k-ю букву
+        expected_result = 'ад'
+        sentence = "рад"
+        k = 1
+        result = task9109b(sentence, k)
+        assert_equal(expected_result, result)
+
+    def test_task9111(self): #Дано слово. Если его длина нечетная, то удалить среднюю букву, в противном случае — две средних буквы
+        expected_result = 'ко'
+        sentence = "капо"
+        result = task9111(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9111b(self): #Дано слово. Если его длина нечетная, то удалить среднюю букву, в противном случае — две средних буквы
+        expected_result = 'пока'
+        sentence = "попка"
+        result = task9111b(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9112(self): # Дано предложение. Удалить из него все символы с n1-го по n2-й
+        expected_result = 'ко'
+        sentence = "капо"
+        n1 = 2
+        n2 = 3
+        result = task9112(sentence, n1, n2)
+        assert_equal(expected_result, result)
+
+    def test_task9115(self): # Дано предложение. Удалить из него все буквы о, стоящие на нечетных местах.
+        expected_result = 'клесица'
+        sentence = "околесица"
+        result = task9115(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9114(self): # Дано слово. Удалить из него все повторяющиеся буквы, оставив их первые вхождения, т. е. в слове должны остаться только различные буквы.
+        expected_result = 'длиноше'
+        sentence = "длинношеее"
+        result = task9114(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9153(self): # Дан текст. Найти наибольшее количество идущих подряд одинаковых символов.
+        expected_result = 3
+        sentence = "длинношеее"
+        result = task9153(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9155(self): # В слове имеются только две одинаковых буквы. Найти их.
+        expected_result = "а"
+        sentence = "ваза"
+        result = task9155(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9156(self): # Даны два слова. Для каждой буквы первого слова (в том числе для повторяющихся в этом слове букв) определить, входит ли она во второе слово. Например, если заданные слова информация и процессор, то для букв первого из них ответом должно быть: нет нет нет да да нет нет да нет нет.
+        expected_result = [0, 0, 0, 1, 1, 0, 0, 1, 0, 0]
+        w1 = "информация"
+        w2 = "процессор"
+        result = task9156(w1, w2)
+        assert_equal(expected_result, result)
+
+    def test_task9157(self): # Даны два слова. Для каждой буквы первого слова (в том числе для повторяющихся в этом слове букв) определить, входит ли она во второе слово. Например, если заданные слова информация и процессор, то для букв первого из них ответом должно быть: нет нет нет да да нет нет да нет нет.
+        expected_result = [0, 1, 1, 1, 0, 0]
+        w2 = "информация"
+        w1 = "процессор"
+        result = task9157(w1, w2)
+        assert_equal(expected_result, result)
+
+    def test_task9158(self): #  Даны два слова. Напечатать только те буквы слов, которые встречаются в обоих словах только один раз. Например, если заданные слова процессор и информация, то ответом должно быть: п е ф м а я.
+        expected_result = 1
+        w2 = "информация"
+        w1 = "процессор"
+        result = task9158(w1, w2)
         assert_equal(expected_result, result)
