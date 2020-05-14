@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task9108b, task9114, task991, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task614, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 
 
 class TestOperators(unittest.TestCase):
@@ -962,4 +962,46 @@ class TestOperators(unittest.TestCase):
         w2 = "информация"
         w1 = "процессор"
         result = task9158(w1, w2)
+        assert_equal(expected_result, result)
+
+    def test_task9184(self): #  Дан текст. Проверить, правильно ли в нем расставлены круглые скобки (т. е.находится ли справа от каждой открывающей скобки соответствующая ейзакрывающая скобка, а слева от каждой закрывающей — оответствующая ей закрывающая). Предполагается, что внутри каждой пары скобок нет других скобок.
+        expected_result = 1
+        sentence = "Съешь (ещё) булочек (побольше)"
+        result = task9184(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9184b(self): # В случае неправильности расстановки скобок: если имеются лишние правые (закрывающие) скобки, то выдать сообщение с указанием позиции первой такой скобки;
+        expected_result = 12
+        sentence = "Съешь (ещё)) булочек (побольше)"
+        result = task9184b(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9185a(self): # *Строка содержит арифметическое выражение, в котором используются круглые скобки, в том числе вложенные. Проверить, правильно ли в нем расставлены скобки.
+        expected_result = 1 #в данном случае только одна лишняя открывающая скобка
+        sentence = "Съешь (((ещё) булочек) побольше"
+        result = task9185(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9185b(self): # *Строка содержит арифметическое выражение, в котором используются круглые скобки, в том числе вложенные. Проверить, правильно ли в нем расставлены скобки.
+        expected_result = 'ok' #в данном случае всё норм
+        sentence = "Съешь ((ещё) булочек) побольше"
+        result = task9185(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9185c(self): # *Строка содержит арифметическое выражение, в котором используются круглые скобки, в том числе вложенные. Проверить, правильно ли в нем расставлены скобки.
+        expected_result = 22 #лишняя скобка стоит в позиции 22
+        sentence = "Съешь ((ещё) булочек)) побольше"
+        result = task9185(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9185c(self): # *Строка содержит арифметическое выражение, в котором используются круглые скобки, в том числе вложенные. Проверить, правильно ли в нем расставлены скобки.
+        expected_result = 22 #лишняя скобка стоит в позиции 22
+        sentence = "Съешь ((ещё) булочек)) побольше"
+        result = task9185(sentence)
+        assert_equal(expected_result, result)
+
+    def test_task9187(self): # *Дано натуральное число n (n 1000). Напечатать это число русскими словами (тринадцать, сто пять, двести сорок один, тысяча и т. д.).
+        expected_result = "одна тысяча двести тридцать четыре"
+        number = 1234
+        result = task9187(number)
         assert_equal(expected_result, result)
