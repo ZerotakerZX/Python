@@ -1,7 +1,8 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
-
+from operators import task614, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from array import *
+import numpy as np
 
 class TestOperators(unittest.TestCase):
     def test_task47(self):
@@ -1004,4 +1005,30 @@ class TestOperators(unittest.TestCase):
         expected_result = "одна тысяча двести тридцать четыре"
         number = 1234
         result = task9187(number)
+        assert_equal(expected_result, result)
+
+    def test_task121(self): # Вывести на экран элемент, расположенный в правом верхнем углу массива
+        expected_result = 3
+        ar0 = [[1, 2, 3], [4, 5, 6]] #массив в виде вложенного списка
+        result = task121(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task121b(self): # Вывести на экран элемент, расположенный в левом нижнем углу массива
+        expected_result = 4
+        ar0 = [[1, 2, 3], [4, 5, 6]] #массив в виде вложенного списка
+        result = task121b(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task123a(self): # составить прогу вывода на экран любого элемента второй строки массива;
+        expected_result = 4
+        ar0 = [[1, 2, 3], [4, 5, 6]] #массив в виде вложенного списка
+        inp = int(input("Введите номер символа")) #для теста нужно ввести 1
+        result = task123a(ar0, inp)
+        assert_equal(expected_result, result)
+
+    def test_task125b(self): # составить прогу что выводит все элементы s-го столбца массива
+        expected_result = [1, 4]
+        ar0 = np.array([[1, 2, 3], [4, 5, 6]]) #массив в виде для модуля numpy
+        inp = int(input("Введите номер символа"))  # для теста нужно ввести 1
+        result = task125b(ar0, inp)
         assert_equal(expected_result, result)

@@ -1,5 +1,5 @@
-import numpy, math
-
+import numpy as np
+from array import *
 
 def task47(a, b):
     if a > b:
@@ -568,7 +568,7 @@ def task576(num, deg):
         degs.append(i)
         while (i % 1) == 0:  # чтобы знать когда кончился цикл
             prod.append(num)  # цифра добавлятся в список столько раз, какая нужна степерь
-            prod2.append(numpy.prod(prod))  # содержимое списка перемножается в нужную степерь и пишетсяся сюда
+            prod2.append(np.prod(prod))  # содержимое списка перемножается в нужную степерь и пишетсяся сюда
             break
     result = sum(prod2)
     return result
@@ -707,7 +707,7 @@ def task622d(number):
     for i in list_number:
         if i > 7:
             list_number_aux.append(i)  # выписываем числа выше пяти в другой список
-    return numpy.prod(list_number_aux)  # и возвращаем их произведение
+    return np.prod(list_number_aux)  # и возвращаем их произведение
 
 
 def task622e(number):
@@ -1206,8 +1206,8 @@ def task9157(w1, w2):
 def task9158(w1, w2):
     onelist = list(w1+w2) #превращем оба слова в набор букв
     dick = list(dict.fromkeys(onelist)) #убираем все дубли превращая временно в список
-    a = numpy.array(onelist) #превращаем оба списка в массив
-    b = numpy.array(dick) #
+    a = np.array(onelist) #превращаем оба списка в массив
+    b = np.array(dick) #
     c = a - b #так получаем список лишних букв у которых есть дубли
     return a - c #и удаляем эти дубли из чистого объеденённого списка
 
@@ -1358,5 +1358,25 @@ def task9187(number):
     if num[-2:] == '19':
         fou = "девятнадцать"
         thr = ''
-
     return one + ' ' + two + ' ' + thr + ' ' + fou
+
+def task121(ar0):
+    print(ar0[0][-1])
+    return (ar0[0][-1])
+
+def task121b(ar0):
+    print(ar0[1][0])
+    return (ar0[1][0])
+
+def task123a(ar0, inp):
+    inp_shift = inp - 1 #поправка на отчёт с нуля
+    print(ar0[1][inp_shift])
+    return (ar0[1][inp_shift])
+
+def task125b(ar0, inp):
+    answer = [] #временный список на потом
+    inp_shift = inp - 1  # поправка на отчёт с нуля
+    print(ar0[:,inp_shift]) #вывод стобла массива в numpy
+    for i in ar0[:,inp_shift]:
+        answer.append(i) #костыль чтобы конечные цифры были в удобном формате
+    return answer
