@@ -1380,3 +1380,30 @@ def task125b(ar0, inp):
     for i in ar0[:,inp_shift]:
         answer.append(i) #костыль чтобы конечные цифры были в удобном формате
     return answer
+
+def task127a(ar0, inp):
+    inp_shift = inp - 1  # поправка на отчёт с нуля
+    ar0[1, inp_shift] = 150
+    return ar0[1, inp_shift]
+
+def task128a(ar0, inp):
+    inp_shift = inp - 1  # поправка на отчёт с нуля
+    ar0[inp_shift, 1] = 13
+    return ar0[inp_shift, 1]
+
+def task129a(ar0, inp): #stub
+    inp_shift = inp - 1  # поправка на отчёт с нуля
+    ar0[inp_shift, 1] = 13
+    return ar0[inp_shift, 1]
+
+def task1222(ar0):
+    ar0.fill(0) #заполнить таблицу числами чтобы она была на что-то похожа
+    ar0 = np.delete(ar0, np.s_[0:10], axis = 0) #и в принципе сразу удалить все ряды
+    temp = []
+    for i in range(1, 11): #для таблицы умножения берём цифры от 1 до 10 включительно
+        for j in range(1, 11):
+            temp.append(i * j) #потихоньку перемножаем между собой числа 1-10 десять раз
+            if len(temp) == 10: #каждый раз когда временный список достигает десяти
+                ar0 = np.vstack((ar0, temp))#записываем его в массив
+                temp = [] #и обнуляем список, когда начинается обсчёт следующего первого числа
+    return ar0[9, 9] #последнее число таблицы умножения для проверки
