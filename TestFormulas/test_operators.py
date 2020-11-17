@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task614, task1232a, task1232b, task1224, task1227, task1226a, task1225a, task129a, task1223v, task1222, task127a, task128a, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task12106, task12102, task1296, task1295a, task1293, task1291c, task1290c, task1290a, task1289d, task1289c, task1285, task1285b, task1265, task1234b, task1234a, task614, task1232a, task1232b, task1224, task1227, task1226a, task1225a, task129a, task1223v, task1222, task127a, task128a, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 from array import *
 import numpy as np
 
@@ -1104,4 +1104,94 @@ class TestOperators(unittest.TestCase):
         k = 3
         ar0 = np.array([[1,2,3],[5,6,7],[8,9,10]])  # простенький массивчик для работы
         result = task1232b(ar0, k)
+        assert_equal(expected_result, result)
+
+    def test_task1234a(self): #Дан двумерный массив. Вывести на экран его элементы следующим образом:а) сначала элементы первой строки справа налево, затем второй строки справа налево и т. п.;
+        expected_result = [[3, 2, 1], [7, 6, 5], [10, 9, 8]]
+        ar0 = np.array([[1,2,3],[5,6,7],[8,9,10]])  # простенький массивчик для работы
+        result = task1234a(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1234b(self): #сначала элементы первой строки справа налево, затем второй строки слева направо и тд
+        expected_result = [[3, 2, 1], [5, 6, 7], [10, 9, 8]]
+        ar0 = np.array([[1,2,3],[5,6,7],[8,9,10]])  # простенький массивчик для работы
+        result = task1234b(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1265(self): #Три группы студентов, в каждой из которых 5 человек, в сессию сдавали по 3 экзамена. Сведения об оценках каждой группы хранятся в двумерных массивах. Определить лучшую по средней оценке группу
+        expected_result = 3
+        ar0 = np.array([[3,3,3,3,3],[4,4,4,4,4],[5,5,5,5,5]])  # простенький массивчик для работы
+        result = task1265(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1285(self): #. Дан двумерный массив. Определить: а) номер столбца, в котором расположен минимальный элемент четвертой строки массива. Если элементов с минимальным значением в этой строке несколько, то должен быть найден номер столбца самого левого из них;
+        expected_result = 1
+        ar0 = np.array([[0,1],[0,2],[0,3]])  # простенький массивчик для работы
+        result = task1285(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1285b(self): #. номер строки, в котором расположен максимальный элемент третьегостолбца массива. Если элементов с максимальным значением в этом столбценесколько, то должен быть найден номер строки самого нижнего из них.
+        expected_result = 3
+        ar0 = np.array([[0,1],[0,2],[0,3]])  # простенький массивчик для работы
+        result = task1285b(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1289c(self): #. номер строки, в котором расположен максимальный элемент третьегостолбца массива. Если элементов с максимальным значением в этом столбценесколько, то должен быть найден номер строки самого нижнего из них.
+        expected_result = ([2], [2])
+        ar0 = np.array([[1,2,3],[4,5,6],[7,8,0]])  # простенький массивчик для работы
+        result = task1289c(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1289d(self): #) координаты минимального элемента массива. Если элементов с минимальным значением несколько, тодолжны быть найдены координаты самого нижнего и самого правого из них;.
+        expected_result = [(2, 1)]
+        ar0 = np.array([[1,2,3],[4,5,6],[7,0,9]])  # простенький массивчик для работы
+        result = task1289d(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1290a(self): #)Дан двумерный массив. В каждой его строке найти макс эелемент
+        expected_result = [1, 4, 7]
+        ar0 = np.array([[1,2,3],[4,5,6],[7,8,9]])  # простенький массивчик для работы
+        result = task1290a(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1290c(self): #)координаты минимального элемента. Если элементов с максимальнымзначением в строке несколько, то должны быть найдены координаты самоголевого из них;
+        expected_result = [1, 1, 1]
+        ar0 = np.array([[1,0,3],[4,0,6],[7,0,9]])  # простенький массивчик для работы
+        result = task1290c(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1291c(self): #)координаты минимального элемента. Если элементов с максимальнымзначением в строке несколько, то должны быть найдены координаты самоголевого из них;
+        expected_result = [0, 0, 0]
+        ar0 = np.array([[1,2,3],[4,5,6],[7,8,9]])  # простенький массивчик для работы
+        result = task1291c(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1293(self): #Дан двумерный массив. Найти: макс сумму элементов строки
+        expected_result = [24]
+        ar0 = np.array([[1,2,3],[4,5,6],[7,8,9]])  # простенький массивчик для работы
+        result = task1293(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1295a(self): #двумерном массиве хранится информация о баллах, полученных спортсменами-пятиборцами в каждомиз пяти видов спорта (в первой строке —информация о баллах первого спортсмена, во второй — второго и т. д.). Общее число спортсменов равно 5 сколько баллов набрал спортсмен-победитель соревнований;
+        expected_result = 25
+        ar0 = np.array([[1,1,1,1,1],[2,2,2,2,2],[3,3,3,3,3],[4,4,4,4,4],[5,5,5,5,5]])  # простенький массивчик для работы
+        result = task1295a(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task1296(self): #Дан двумерный массив. Найти:а) строку с максимальной суммой элементов. Если таких строк несколько,должен быть найден номер самой нижней из них
+        expected_result = 5
+        ar0 = np.array([[1,1,1,1,1],[2,2,2,2,2],[3,3,3,3,3],[5,5,5,5,5],[5,5,5,5,5]])  # простенький массивчик для работы
+        result = task1296(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12102(self): #Дан двумерный массив из двух строк и 10 столбцов. Найти максимальную сумму элементов в двух соседних столбцах
+        expected_result = 39
+        ar0 = np.array([[1,2,3,4,5,6,7,8,9,10],[11,12,13,14,15,16,17,18,19,20]])  # простенький массивчик для работы
+        result = task12102(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12106(self): #. Дан двумерный массив из двух строк и 10 столбцов. Найти номера двух соседних столбцов, сумма элементов в которых максимальна.
+        expected_result = 19, 20
+        ar0 = np.array([[1,2,3,4,5,6,7,8,9,10],[11,12,13,14,15,16,17,18,19,20]])  # простенький массивчик для работы
+        result = task12106(ar0)
         assert_equal(expected_result, result)
