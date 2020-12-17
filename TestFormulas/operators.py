@@ -1,4 +1,6 @@
 import numpy as np
+from itertools import chain
+from collections import Counter
 from array import *
 
 def task47(a, b):
@@ -1581,3 +1583,44 @@ def task12106(ar0):
     postpos = abs(prepos - ar0.size)
     print(postpos)
     return postpos, (postpos - 1)
+
+def task12110(ar0):
+    list0 = []  # временная матрица
+    col_mean = list(ar0.mean(axis=0))  # позволяет найти среднее каждой колонки, что позволить узнать температу на каждый день за три года
+    print(col_mean)
+    for i, j, g in zip(col_mean, col_mean[1:], col_mean[2:]): #можно начать считать сразу с трех мест паралельно
+        list0.append(i + j + g) #и записывать сумму каждой пары пока не кончиться ряд
+    trio = np.argmax(list0) #указывает какая по счёту тройца дней будет самой тёплой в среднем
+    return (trio+1), (trio+2), (trio+3) # к этому числу прибавляем +1 для компенсации остчёта с нуля, это будет первый самый тёплый день, так же возвращаем два следущищх по счёту дня, после первого в троице
+
+def task12134(ar0):
+    u, c = np.unique(ar0, return_counts=True)
+    dup = u[c > 1] #помогает понять какое значене встречается больше одного раза
+    inds = np.where(ar0 == dup) #ищем это значение в матрице
+    return list(zip(inds[0], inds[1])) #и что получается возвращаем форматировав во что-то удобоваримое
+
+def task12154(ar0, string_number):
+    ar0_main_diag = np.diag(ar0)
+    return ar0_main_diag[string_number - 1] #берём номер строки с поправкой на отсчёт с нуля и возвращаем и находим его в срезе по диагонали
+
+def task12155(ar0, string_number):
+    ar0_sec_diag = np.diag(np.fliplr(ar0)) #np.fliplr позвляет смотреть на отзеркальный массив, дальше вёс так же
+    return ar0_sec_diag[string_number - 1] #берём номер строки с поправкой на отсчёт с нуля и возвращаем и находим его в срезе по диагонали
+
+def task12160(ar0):
+    np.fill_diagonal(ar0, 0) #диагональ заполняется легко через одну команду
+    return sum(np.diag(ar0)) #для проверки вернём её сумму, что должна быть 0
+
+def task12177(ar0):
+    print(ar0)
+    lst0 = [] #тут будут лежать все затронутые обхекты
+    for i in tuple(np.diag(ar0)), tuple(np.diag(np.fliplr(ar0))):
+        lst0.append(i) #собираем все цирфы со всех диагоналей
+    lst0 = (list(chain.from_iterable(lst0))) #с помощью модуля убираем все гнёзда для удобства
+    max_ele = max(lst0) #находим среди элемента максимальный
+    max_ele_ind = np.where(ar0 == max_ele) #нахоидм его коордианты
+    max_ele_ind = list(zip(max_ele_ind[0], max_ele_ind[1])) #конвертируем их в нормальный список
+    max_ele_ind = (list(chain.from_iterable(max_ele_ind))) #конвертируем их в нормальный список
+    center = round(len(ar0) / 2) - 1 #находим координату по вертикали и горизнотали что будет центром матрицы с поправкой на отсчёт с нуля
+    ar0[max_ele_ind[0], max_ele_ind[1]], ar0[center, center] = ar0[center, center], ar0[max_ele_ind[0], max_ele_ind[1]] # длинной, но простой формулой меняем полученные коордианты местами
+    return ar0[max_ele_ind[0], max_ele_ind[1]] #для проверки возвращаем центрально езначение

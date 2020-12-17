@@ -1,8 +1,9 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task12106, task12102, task1296, task1295a, task1293, task1291c, task1290c, task1290a, task1289d, task1289c, task1285, task1285b, task1265, task1234b, task1234a, task614, task1232a, task1232b, task1224, task1227, task1226a, task1225a, task129a, task1223v, task1222, task127a, task128a, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task12177, task12160, task12155, task12154, task12134, task12110, task12106, task12102, task1296, task1295a, task1293, task1291c, task1290c, task1290a, task1289d, task1289c, task1285, task1285b, task1265, task1234b, task1234a, task614, task1232a, task1232b, task1224, task1227, task1226a, task1225a, task129a, task1223v, task1222, task127a, task128a, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 from array import *
 import numpy as np
+from collections import Counter
 
 class TestOperators(unittest.TestCase):
     def test_task47(self):
@@ -1194,4 +1195,42 @@ class TestOperators(unittest.TestCase):
         expected_result = 19, 20
         ar0 = np.array([[1,2,3,4,5,6,7,8,9,10],[11,12,13,14,15,16,17,18,19,20]])  # простенький массивчик для работы
         result = task12106(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12110(self): #теплыми являются дни с 1 по 7 августа. выбрать 3 следующих подряд дней этого периода, которые были наиболее теплыми за последние 3 лет
+        expected_result = (5, 6, 7)
+        ar0 = np.array([[1,2,3,4,5,6,7],[11,12,13,14,15,16,17],[21,22,23,24,25,26,27]])  # простенький массивчик для работы
+        result = task12110(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12134(self): #В двумерном массиве имеются только два одинаковых элемента. Найти их
+        expected_result = [(1, 0), (2, 0)]
+        ar0 = np.array([[1,2,3,4,5,6,7],[99,12,13,14,15,16,17],[99,22,23,24,25,26,27]])  # простенький массивчик для работы
+        result = task12134(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12154(self): #Известен номер строки, на которой расположен элемент главной диагонали квадратного массива. Вывести на экран значение этого элемента
+        expected_result = 8
+        string_number = 3 #известный номер строки
+        ar0 = np.arange(9).reshape((3,3))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12154(ar0, string_number)
+        assert_equal(expected_result, result)
+
+    def test_task12155(self): #Известен номер строки, на которой расположен элемент главной диагонали квадратного массива. Вывести на экран значение этого элемента
+        expected_result = 6
+        string_number = 3 #известный номер строки
+        ar0 = np.arange(9).reshape((3,3))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12155(ar0, string_number)
+        assert_equal(expected_result, result)
+
+    def test_task12160(self): #Заменить значения всех элементов главной диагонали квадратного массиванулевыми.
+        expected_result = 0
+        ar0 = np.arange(9).reshape((3,3))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12160(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12177(self): #В квадратном массиве из n строк, где n — нечетное число, все элементы различны. Наибольший элемент среди стоящих на главной и побочной диагоналях поменять местами с элементом, стоящим на пересечении этих диагоналей.
+        expected_result = 4
+        ar0 = np.arange(9).reshape((3,3))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12177(ar0)
         assert_equal(expected_result, result)
