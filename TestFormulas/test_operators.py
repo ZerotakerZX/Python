@@ -1,6 +1,6 @@
 import unittest
 from nose.tools import assert_equal, assert_false, assert_true, assert_list_equal
-from operators import task12177, task12160, task12155, task12154, task12134, task12110, task12106, task12102, task1296, task1295a, task1293, task1291c, task1290c, task1290a, task1289d, task1289c, task1285, task1285b, task1265, task1234b, task1234a, task614, task1232a, task1232b, task1224, task1227, task1226a, task1225a, task129a, task1223v, task1222, task127a, task128a, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
+from operators import task12206a, task12205a, task12201, task12200, task12198, task12177, task12160, task12155, task12154, task12134, task12110, task12106, task12102, task1296, task1295a, task1293, task1291c, task1290c, task1290a, task1289d, task1289c, task1285, task1285b, task1265, task1234b, task1234a, task614, task1232a, task1232b, task1224, task1227, task1226a, task1225a, task129a, task1223v, task1222, task127a, task128a, task121b, task125b, task121, task123a, task9185, task9108b, task9187, task9114, task991, task9184b, task9184, task9115, task9158, task9157, task9155, task9156, task9153, task9109b, task9112, task9111, task9111b, task992, task9103, task9106, task9105, task9107, task9104, task993, task9102, task989, task9101, task9100, task92, task832, task976b, task975a, task836, task835, task829, task825, task6108, task686, task6105, task653, task677, task669, task666, task657, task661, task660, task658, task656, task655, task654, task643, task651, task643b, task628a, task633, task632, task631, task630, task628b, task622d, task622e, task622g, task619, task617, task616, task61b, task613, task612, task610a, task610b, task69, task62, task576, task574, task581, task575, task572b, task573a, task573b, task573v, task572a, task570, task571a, task571b, task538b, task538a, task533, task532, task530a, task529a, task528a, task527a, task515, task59, task53b, task53a, task47, task410, task411, task416a, task416b, task423a, task427, task431a, task431b, task436, task464, task465, task466, task467, task469, task4100, task4100b, task4103, task4103b, task4104, task510
 from array import *
 import numpy as np
 from collections import Counter
@@ -1233,4 +1233,38 @@ class TestOperators(unittest.TestCase):
         expected_result = 4
         ar0 = np.arange(9).reshape((3,3))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
         result = task12177(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12198(self): #К элементам k1-й строки двумерного массива прибавить элементы k2-й
+        expected_result = [5, 7, 9, 11, 13]
+        ar0 = np.arange(10).reshape((2,5))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12198(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12200(self): #Заменить все элементы k-й строки и s-го столбца двумерного массива противоположными по знаку (элемент, стоящий на пересечении, не изменять)
+        expected_result = [[0, -1], [-2, 3]]
+        k = 1
+        s = 1
+        ar0 = np.arange(4).reshape((2,2))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12200(ar0, k, s)
+        assert_equal(expected_result, result)
+
+    def test_task12201(self): #В каждой строке двумерного массива поменять местами первый элемент илюбой из максимальных.
+        expected_result = [[1, 0], [3, 2]]
+        ar0 = np.arange(4).reshape((2,2))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12201(ar0)
+        assert_equal(expected_result, result)
+
+    def test_task12205a(self): #составить программу которая переставляет две любые строки массива
+        expected_result = [[2, 3], [0, 1]]
+        ar0 = np.arange(4).reshape((2,2))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        a = 0 #первая строка для замены
+        b = 1 #вторая строка для замены
+        result = task12205a(ar0, a, b)
+        assert_equal(expected_result, result)
+
+    def test_task12206a(self): #Ко всем четным элементам массива прибавить первый элемент соответствующей строки
+        expected_result = [[0, 0], [4, 4]]
+        ar0 = np.arange(4).reshape((2,2))  #сгенерировать КВАДРАТНЫЙ массивчик для работы
+        result = task12206a(ar0)
         assert_equal(expected_result, result)
